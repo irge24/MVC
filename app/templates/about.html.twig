@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block title %}About{% endblock %}
+
+{% block body %}
+    <h1>About</h1>
+
+    <p>Kursen Objektorienterade webbteknologier, även kallad mvc, är kursen 
+    där vi får lära oss om objektorienterad programmering i programmeringsspråket
+    PHP. Vi kommer även använda oss av databaser och enhetstestning.</p>
+
+    <a href="{{ asset('img/php.jpg') }}">
+        <img src="{{ asset('img/php.jpg') }}" alt="">
+    </a>
+
+{% endblock %}
