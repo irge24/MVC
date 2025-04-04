@@ -17,17 +17,25 @@
     </head>
     <body>
 
-        <header class="site-header" style="background-image: url({{ asset('img/background.jpg') }})">
-            <span class="site-title">My Symfony Site</span>
+        <header class="site-header">
+            <span class="site-title">Min första Symfony sida!</span>
         </header>
 
         <nav>
             <ul>
                 <li><a href="{{ path('home') }}">Home</a></li>
                 <li><a href="{{ path('about') }}">About</a></li>
-                <li><a href="{{ path('lucky_number') }}">Lucky number</a></li>
+                <li><a href="{{ path('lucky_number') }}">Random number</a></li>
+                <li><a href="{{ path('report') }}">Report</a></li>
             </ul>
         </nav>        
         {% block body %}{% endblock %}
+
+        <footer class="site-footer">
+        Jobbar för fullt med Kmom01 just nu. 
+
+        <a href="https://symfony.com/doc/current/index.html">Symfony dokumentation</a>
+
+        </footer>
     </body>
 </html>
