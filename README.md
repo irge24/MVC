@@ -8,9 +8,13 @@ Terminalen:
 
 # Gå till din katalog för dbwebb-kurser
 dbwebb selfupdate
+
 dbwebb clone mvc
+
 cd mvc
+
 dbwebb init
+
 
 Kom igång med Symfony genom att göra följande övning:
 https://github.com/dbwebb-se/mvc/tree/main/example/symfony#add-a-json-route
