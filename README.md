@@ -1,20 +1,60 @@
-# MVC
+# Min Symfony-sida för MVC-kursen
 
 ![Webbplatsbild](https://www.student.bth.se/~irge24/dbwebb-kurser/mvc/me/report/public/img/php.jpg)
 
-Klona kursrepot på följande sätt:
+Detta är min egna `me/report`-sida i kursen **MVC**.  
+SIdan är byggd med Symfony-ramverket och innehåller en enkel struktur med routing, controllers och templates.
 
-Terminalen:
+---
 
-# Gå till din katalog för dbwebb-kurser
-dbwebb selfupdate
+## Hur du klonar och kör projektet
 
-dbwebb clone mvc
+Innan du börjar behöver du ha följande installerat på din dator:
 
-cd mvc
+- [PHP](https://www.php.net/) (version 8.1 eller senare)
+- [Composer](https://getcomposer.org/)
+- [Symfony CLI](https://symfony.com/download)
 
-dbwebb init
+---
 
+### Klona mitt repo
 
-Kom igång med Symfony genom att göra följande övning:
-https://github.com/dbwebb-se/mvc/tree/main/example/symfony#add-a-json-route
+Kör följande i terminalen
+
+```bash
+git clone https://github.com/irge24/MVC.git
+cd MVC/me/report
+```
+
+---
+
+### Starta servern
+
+1. Stå i `MVC/me/report`-mappen:
+
+```bash
+cd MVC/me/report
+```
+
+2. Starta Symfony-servern på följande sätt i terminalen:
+
+```bash
+symfony server:start
+```
+
+3. Öppna webbläsaren och gå till:
+
+```
+http://127.0.0.1:8000
+```
+
+---
+
+## 📄 Innehåll på min symfony-sida
+
+Webbplatsen innehåller följande sidor:
+
+1. **Startsida** (`/`) – Förstasidan med min introduktion
+2. **About** (`/about`) – Om kursen MVC
+3. **Report** (`/report`) – Redovisningstexter under kursens gång
+4. **Random number** (`/random`) – Visar ett slumpmässigt tal
