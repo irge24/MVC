@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <h1>Session</h1>
+
+    <ul>
+        <li><a href="{{ path('session_delete') }}">Session delete</a></li>
+    </ul>
+
+    {{ dump(app.session.all) }}
+
+    {{ include('flash.html.twig') }}
+
+{% endblock %}
