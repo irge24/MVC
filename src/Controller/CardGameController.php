@@ -4,9 +4,11 @@
 
 namespace App\Controller;
 
-use App\Dice\Dice;
-use App\Dice\DiceGraphic;
-use App\Dice\DiceHand;
+use App\Card\Card;
+use App\Card\CardGraphic;
+use App\Card\CardHand;
+use App\Card\DeckOfCards;
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -40,6 +42,59 @@ class CardGameController extends AbstractController
         return $this->render('session.html.twig');
     }
 
+    #[Route("/card/deck", name: "deck")]
+    public function deck(): Response
+    {
+        $cardDeck = [];
+        for ($i = 1; $i <= 52; $i++) {
+            $card = new CardGraphic();
+            $card->setValue($i);
+            $cardDeck[] = $card->getAsString();
+        }
+
+        $data = [
+            "cardDeck" => $cardDeck,
+        ];
+
+        return $this->render('card/deck.html.twig', $data);
+    }
+
+    #[Route("/card/deck/shuffle", name: "shuffle")]
+    public function shuffle(): Response
+    {
+        $cardDeck = [];
+        for ($i = 1; $i <= 52; $i++) {
+            $card = new CardGraphic();
+            $card->setValue($i);
+            $cardDeck[] = $card->getAsString();
+        }
+
+        shuffle($cardDeck);
+
+        $data = [
+            "cardDeck" => $cardDeck,
+        ];
+
+        return $this->render('card/deck/shuffle.html.twig', $data);
+    }
+//inte gjort draw
+    #[Route("/card/deck/draw", name: "draw")]
+    public function draw(): Response
+    {
+        $cardDeck = [];
+        for ($i = 1; $i <= 52; $i++) {
+            $card = new CardGraphic();
+            $card->setValue($i);
+            $cardDeck[] = $card->getAsString();
+        }
+
+        $data = [
+            "cardDeck" => $cardDeck,
+        ];
+
+        return $this->render('card/deck/draw.html.twig', $data);
+    }
+
     #[Route("/game/pig/test/roll", name: "test_roll_dice")]
     public function testRollDice(): Response
     {
@@ -51,29 +106,6 @@ class CardGameController extends AbstractController
         ];
 
         return $this->render('pig/test/roll.html.twig', $data);
-    }
-
-    #[Route("/game/pig/test/roll/{num<\d+>}", name: "test_roll_num_dices")]
-    public function testRollDices(int $num): Response
-    {
-        if ($num > 99) {
-            throw new \Exception("Can not roll more than 99 dices!");
-        }
-
-        $diceRoll = [];
-        for ($i = 1; $i <= $num; $i++) {
-            // $die = new Dice();
-            $die = new DiceGraphic();
-            $die->roll();
-            $diceRoll[] = $die->getAsString();
-        }
-
-        $data = [
-            "num_dices" => count($diceRoll),
-            "diceRoll" => $diceRoll,
-        ];
-
-        return $this->render('pig/test/roll_many.html.twig', $data);
     }
 
     #[Route("/game/pig/test/dicehand/{num<\d+>}", name: "test_dicehand")]

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Dice;
+namespace App\Card;
 
-class Dice
+class Card
 {
     protected $value;
 
@@ -20,6 +20,11 @@ class Dice
     public function getValue(): int
     {
         return $this->value;
+    }
+
+    public function setValue(int $value): void
+    {
+        $this->value = $value;
     }
 
     public function getAsString(): string

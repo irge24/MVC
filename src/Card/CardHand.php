@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Dice;
+namespace App\Card;
 
-use App\Dice\Dice;
+use App\Card\Card;
 
-class DiceHand
+class CardHand
 {
     private $hand = [];
 
