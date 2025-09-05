@@ -6,8 +6,11 @@
 <h1>Card deck</h1>
 
 <p>Antal kort kvar i kortleken: {{ amountCards }}</p>
+
 <ul>
-    <li>{{ aCard }}</li>
+{% for card in drawCards %}
+    <li>{{ card }}</li>
+{% endfor %}
 </ul>
 
 {% endblock %}

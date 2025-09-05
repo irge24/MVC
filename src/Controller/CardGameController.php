@@ -43,7 +43,7 @@ class CardGameController extends AbstractController
     }
 
     #[Route("/card/deck", name: "deck")]
-    public function deck(): Response
+    public function deck(SessionInterface $session): Response
     {
         $cardDeck = [];
         for ($i = 1; $i <= 52; $i++) {
@@ -51,6 +51,8 @@ class CardGameController extends AbstractController
             $card->setValue($i);
             $cardDeck[] = $card->getAsString();
         }
+
+        $session->set("deck", $cardDeck);
 
         $data = [
             "cardDeck" => $cardDeck,
@@ -60,7 +62,7 @@ class CardGameController extends AbstractController
     }
 
     #[Route("/card/deck/shuffle", name: "shuffle")]
-    public function shuffle(): Response
+    public function shuffle(SessionInterface $session): Response
     {
         $cardDeck = [];
         for ($i = 1; $i <= 52; $i++) {
@@ -71,68 +73,66 @@ class CardGameController extends AbstractController
 
         shuffle($cardDeck);
 
+        $session->set("deck", $cardDeck);
+
         $data = [
-            "cardDeck" => $cardDeck,
+            "cardDeck" => $cardDeck
         ];
 
         return $this->render('card/deck/shuffle.html.twig', $data);
     }
-//inte gjort draw
+
     #[Route("/card/deck/draw", name: "draw")]
-    public function draw(): Response
+    public function draw(SessionInterface $session): Response
     {
-        $cardDeck = [];
-        for ($i = 1; $i <= 52; $i++) {
-            $card = new CardGraphic();
-            $card->setValue($i);
-            $cardDeck[] = $card->getAsString();
-        }
+
+        $cardDeck = $session->get("deck");
+        $aCard = array_shift($cardDeck);
+        $newDeck = $cardDeck;
+        $amountCards = count($newDeck);
+
+        $session->set("deck", $newDeck);
+        $session->set("amount_cards", $amountCards);
 
         $data = [
-            "cardDeck" => $cardDeck,
+            "aCard" => $aCard,
+            "amountCards" => $amountCards,
         ];
 
         return $this->render('card/deck/draw.html.twig', $data);
     }
 
-    #[Route("/game/pig/test/roll", name: "test_roll_dice")]
-    public function testRollDice(): Response
+    #[Route("/card/deck/draw/{num<\d+>}", name: "draw_number")]
+    public function draw_number(SessionInterface $session, int $num): Response
     {
-        $die = new Dice();
 
-        $data = [
-            "dice" => $die->roll(),
-            "diceString" => $die->getAsString(),
-        ];
+        $cardDeck = $session->get("deck");
+        $amountCards = $session->get("amount_cards");
 
-        return $this->render('pig/test/roll.html.twig', $data);
-    }
-
-    #[Route("/game/pig/test/dicehand/{num<\d+>}", name: "test_dicehand")]
-    public function testDiceHand(int $num): Response
-    {
-        if ($num > 99) {
-            throw new \Exception("Can not roll more than 99 dices!");
+        if ($num > $amountCards) {
+            throw new \Exception("Can not choose more cards than what is left!");
         }
 
-        $hand = new DiceHand();
+        $drawCards = [];
         for ($i = 1; $i <= $num; $i++) {
-            if ($i % 2 === 1) {
-                $hand->add(new DiceGraphic());
-            } else {
-                $hand->add(new Dice());
-            }
+            $aCard = array_shift($cardDeck);
+            $drawCards[] = $aCard;
+            $newDeck = $cardDeck;
         }
 
-        $hand->roll();
+        $amountCards = count($newDeck);
+        $session->set("deck", $newDeck);
+        $session->set("amount_cards", $amountCards);
 
         $data = [
-            "num_dices" => $hand->getNumberDices(),
-            "diceRoll" => $hand->getString(),
+            "drawCards" => $drawCards,
+            "amountCards" => $amountCards,
         ];
 
-        return $this->render('pig/test/dicehand.html.twig', $data);
+        return $this->render('card/deck/draw_number.html.twig', $data);
     }
+
+// PIG GAME
 
     #[Route("/game/pig/init", name: "pig_init_get", methods: ['GET'])]
     public function init(): Response
@@ -140,14 +140,6 @@ class CardGameController extends AbstractController
         return $this->render('pig/init.html.twig');
     }
 
-    /*
-    #[Route("/game/pig/init", name: "pig_init_post", methods: ['POST'])]
-    public function initCallback(): Response
-    {
-        // Deal with the submitted form
-
-        return $this->redirectToRoute('pig_play');
-    } */
 
     #[Route("/game/pig/init", name: "pig_init_post", methods: ['POST'])]
     public function initCallback(
@@ -171,14 +163,6 @@ class CardGameController extends AbstractController
         return $this->redirectToRoute('pig_play');
     }
 
-    /*
-    #[Route("/game/pig/play", name: "pig_play", methods: ['GET'])]
-    public function play(): Response
-    {
-        // Logic to play the game
-
-        return $this->render('pig/play.html.twig');
-    } */
 
     #[Route("/game/pig/play", name: "pig_play", methods: ['GET'])]
     public function play(
