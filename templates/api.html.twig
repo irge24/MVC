@@ -9,10 +9,12 @@
 </ul>
 
 <button id="shuffle">Shuffle deck</button>
-<button id="draw">Draw 1 card</button>
-<button id="draw5">Draw 5 cards</button>
+<button id="draw1">Draw 1 card</button>
 
-<h3>Result:</h3>
+<h4>Draw custom number of cards</h4>
+<input type="number" id="drawNum" min="1" value="3">
+<button id="drawCustom">Draw X cards</button>
+
 <pre id="output" style="background:#f0f0f0; padding:1em; border-radius:5px;"></pre>
 
 <script>
@@ -20,20 +22,24 @@ function showOutput(data) {
     document.getElementById("output").innerText = JSON.stringify(data, null, 2);
 }
 
+// Shuffle
 document.getElementById("shuffle").addEventListener("click", async () => {
     let response = await fetch("/api/deck/shuffle", { method: "POST" });
     let data = await response.json();
     showOutput(data);
 });
 
-document.getElementById("draw").addEventListener("click", async () => {
+// Draw 1 card
+document.getElementById("draw1").addEventListener("click", async () => {
     let response = await fetch("/api/deck/draw", { method: "POST" });
     let data = await response.json();
     showOutput(data);
 });
 
-document.getElementById("draw5").addEventListener("click", async () => {
-    let response = await fetch("/api/deck/draw/5", { method: "POST" });
+// Draw custom number of cards
+document.getElementById("drawCustom").addEventListener("click", async () => {
+    let num = document.getElementById("drawNum").value;
+    let response = await fetch("/api/deck/draw/" + num, { method: "POST" });
     let data = await response.json();
     showOutput(data);
 });
