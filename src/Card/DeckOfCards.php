@@ -1,29 +1,46 @@
 <?php
 
 namespace App\Card;
+use App\Card\Card;
+use App\Card\CardGraphic;
 
 class DeckOfCards
 {
-    protected $value;
+    private array $deck = [];
 
     public function __construct()
     {
-        $this->value = null;
+        $this->deck = [];
     }
 
-    public function roll(): int
+    public function deck(): array
     {
-        $this->value = random_int(1, 6);
-        return $this->value;
+        $this->deck = [];
+        for ($i = 1; $i <= 52; $i++) {
+            $card = new CardGraphic();
+            $card->setValue($i);
+            $this->deck[] = $card->getAsString();
+        }
+
+        return $this->deck;
     }
 
-    public function getValue(): int
+    public function shuffle(): array
     {
-        return $this->value;
+        $this->deck = [];
+        for ($i = 1; $i <= 52; $i++) {
+            $card = new CardGraphic();
+            $card->setValue($i);
+            $this->deck[] = $card->getAsString();
+        }
+
+        shuffle($this->deck);
+
+        return $this->deck;
     }
 
-    public function getAsString(): string
+    public function getDeck(): array
     {
-        return "[{$this->value}]";
+        return $this->deck;
     }
 }

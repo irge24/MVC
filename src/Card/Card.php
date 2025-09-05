@@ -11,10 +11,13 @@ class Card
         $this->value = null;
     }
 
-    public function roll(): int
+    public function aCard(array $cardDeck): array
     {
-        $this->value = random_int(1, 6);
-        return $this->value;
+        $aCard = array_shift($cardDeck);
+        $newDeck = $cardDeck;
+
+        $this->value = $aCard;
+        return [$aCard, $newDeck]; 
     }
 
     public function getValue(): int

@@ -6,10 +6,20 @@
     <h1>Card</h1>
 
     <ul>
-        <li><a href="{{ path('card') }}">Card</a></li>
-        <li><a href="{{ path('deck') }}">Card deck</a></li>
+        <li><a href="{{ path('deck') }}">Sorted card deck/Current deck</a></li>
         <li><a href="{{ path('shuffle') }}">Shuffle cards</a></li>
         <li><a href="{{ path('draw') }}">Draw card</a></li>
     </ul>
+
+<p>
+Jag har använt mig av tre klasser; Card, CardGraphic och DeckOfCards. 
+Klassen Card har metoder som har att göra med ett enstaka kort, exempelvis
+när ett kort ska dras ut kortleken. CardGraphic ärver från Card, för att kunna
+göra designen på varje kort, alltså varje färg och värde. I DeckOfCards finns
+komposition; klassen har metoder som hanterar hela kortleken och olika saker som 
+användaren kan använda kortleken till, exempelvis att blanda.
+</p>
+
+<img src="{{ asset('images/mvc_uml.drawio.png') }}" alt="UML diagram" />
 
 {% endblock %}

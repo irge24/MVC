@@ -1,9 +1,41 @@
 {% block body %}
-        <header class="site-header">
-            <span>My JSON routes</span>
-        </header>
+<header class="site-header">
+    <span>My JSON routes</span>
+</header>
 
-            <ul>
-                <li><a href="{{ path('api_quote') }}">Quote - Get a random quote</a></li>
-            </ul>  
+<ul>
+    <li><a href="{{ path('api_quote') }}">Quote - Get a random quote</a></li>
+    <li><a href="{{ path('api_deck') }}">Deck - A whole card deck sorted by colour and value</a></li>
+</ul>
+
+<button id="shuffle">Shuffle deck</button>
+<button id="draw">Draw 1 card</button>
+<button id="draw5">Draw 5 cards</button>
+
+<h3>Result:</h3>
+<pre id="output" style="background:#f0f0f0; padding:1em; border-radius:5px;"></pre>
+
+<script>
+function showOutput(data) {
+    document.getElementById("output").innerText = JSON.stringify(data, null, 2);
+}
+
+document.getElementById("shuffle").addEventListener("click", async () => {
+    let response = await fetch("/api/deck/shuffle", { method: "POST" });
+    let data = await response.json();
+    showOutput(data);
+});
+
+document.getElementById("draw").addEventListener("click", async () => {
+    let response = await fetch("/api/deck/draw", { method: "POST" });
+    let data = await response.json();
+    showOutput(data);
+});
+
+document.getElementById("draw5").addEventListener("click", async () => {
+    let response = await fetch("/api/deck/draw/5", { method: "POST" });
+    let data = await response.json();
+    showOutput(data);
+});
+</script>
 {% endblock %}

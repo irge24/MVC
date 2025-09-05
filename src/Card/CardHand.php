@@ -1,5 +1,5 @@
 <?php
-
+// Från övningen pig-game
 namespace App\Card;
 
 use App\Card\Card;
