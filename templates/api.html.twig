@@ -10,12 +10,10 @@
 
 <button id="shuffle">Shuffle deck</button>
 <button id="draw1">Draw 1 card</button>
+<input type="number" id="drawNum" min="1">
+<button id="drawCustom">Draw number of cards</button>
 
-<h4>Draw custom number of cards</h4>
-<input type="number" id="drawNum" min="1" value="3">
-<button id="drawCustom">Draw X cards</button>
-
-<pre id="output" style="background:#f0f0f0; padding:1em; border-radius:5px;"></pre>
+<pre id="output"></pre>
 
 <script>
 function showOutput(data) {
@@ -44,4 +42,5 @@ document.getElementById("drawCustom").addEventListener("click", async () => {
     showOutput(data);
 });
 </script>
+
 {% endblock %}

@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Card\Card;
 use App\Card\CardGraphic;
 use App\Card\DeckOfCards;
-
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,6 +17,20 @@ class CardGameController extends AbstractController
     public function home(): Response
     {
         return $this->render('card.html.twig');
+    }
+
+    // Kmom03
+    #[Route("/game", name: "game")]
+    public function game(): Response
+    {
+        return $this->render('game.html.twig');
+    }
+
+    // Kmom03
+    #[Route("/game/start", name: "start")]
+    public function start(): Response
+    {
+        return $this->render('start.html.twig');
     }
 
     #[Route("/session", name: "session")]

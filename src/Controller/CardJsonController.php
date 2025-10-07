@@ -6,7 +6,6 @@ use App\Card\Card;
 use App\Card\CardGraphic;
 use App\Card\CardHand;
 use App\Card\DeckOfCards;
-
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -37,6 +36,10 @@ class CardJsonController extends AbstractController
         );
 
         return $response;
+
+        return $this->json([
+            'deck' => $deck->getDeck()
+        ]);
     }
 
     #[Route("/api/deck/shuffle", name: "api_shuffle", methods: ['POST'])]

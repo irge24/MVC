@@ -17,7 +17,7 @@ class Card
         $newDeck = $cardDeck;
 
         $this->value = $aCard;
-        return [$aCard, $newDeck]; 
+        return [$aCard, $newDeck];
     }
 
     public function getValue(): int
