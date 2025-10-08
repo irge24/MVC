@@ -33,6 +33,13 @@ class CardGameController extends AbstractController
         return $this->render('start.html.twig');
     }
 
+    // Kmom03
+    #[Route("/game/doc", name: "doc")]
+    public function doc(): Response
+    {
+        return $this->render('doc.html.twig');
+    }
+
     #[Route("/session", name: "session")]
     public function session(): Response
     {

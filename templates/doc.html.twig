@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Dokumentation{% endblock %}
+
+{% block body %}
+    <h1>Dokumentation kmom03</h1>
+
+    <h2>Flödesschema:</h2>
+
+    <img src="{{ asset('images/card.flodesschema.png') }}" alt="Flödesschema" />
+
+    <h2>Pseudokod:</h2>
+    <p>STARTA spelet</p>
+    <p>VISA spelplan. Spelarna (spelare + bank) har inte tagit några kort än.</p>
+
+    <p>Spelare TAR kort. VISA kortet.</p>
+    <p>Spelaren kan:</p>
+
+    <p>1. STANNA -> Bankens tur. Man vet inte den andres kort.</p>
+    <p>2. TA ett till kort -> Fortsätta med spelarens tur. OM spelaren får mer än 21 VINNER banken.</p>
+
+    <p>OM bankens tur.</p>
+    <p>OM banken > 21 VINNER spelaren.</p>
+    <p>OM banken = spelaren VINNER banken.</p>
+    <p>OM banken > spelaren VINNER banken.</p>
+
+    <p>SLUT. NY omgång.</p>
+
+    <h2>Klasser:</h2>
+    <p>Card: Kunna få ett enstaka kort för att visa upp.</p>
+    <p>CardGraphic: Kunna se designen på kortet.</p>
+    <p>CardHand: Hålla reda på spelarnas vardera kort.</p>
+    <p>DeckOfCards: Få ett helt kortspel att använda under spelet och visa upp på spelplanen.</p>
+
+{% endblock %}
