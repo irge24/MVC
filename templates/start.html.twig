@@ -5,5 +5,35 @@
 {% block body %}
     <h1>Spela kortspel</h1>
 
+    {# Visa vems tur det är #}
+    {% if turn == 'player' %}
+        <p><strong>Spelarens tur</strong></p>
+    {% else %}
+        <p><strong>Bankens tur</strong></p>
+    {% endif %}
+
+    {# Spelarens kort #}
+    <h2>Spelarens kort:</h2>
+    <ul>
+        {% for card in player_cards %}
+            <li>{{ card }}</li>
+        {% endfor %}
+    </ul>
+
+    {# Bankens kort #}
+    <h2>Bankens kort:</h2>
+    <ul>
+        {% for card in bank_cards %}
+            <li>{{ card }}</li>
+        {% endfor %}
+    </ul>
+
+    <ul>
+        <a href="{{ path('draw_card') }}">Ta kort</a>
+        <a href="{{ path('stop') }}">Stanna</a>
+        <a href="{{ path('new_game') }}">Nytt spel</a>
+    </ul>
+
+    <p>{{ message }}</p>
 
 {% endblock %}
