@@ -12,6 +12,8 @@
         <p><strong>Bankens tur</strong></p>
     {% endif %}
 
+    <p><strong>{{ message }}</strong></p>
+
     {# Spelarens kort #}
     <h2>Spelarens kort:</h2>
     <ul>
@@ -33,7 +35,5 @@
         <a href="{{ path('stop') }}">Stanna</a>
         <a href="{{ path('new_game') }}">Nytt spel</a>
     </ul>
-
-    <p>{{ message }}</p>
 
 {% endblock %}

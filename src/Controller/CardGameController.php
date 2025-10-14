@@ -60,6 +60,7 @@ class CardGameController extends AbstractController
         if ($session->get("deck") === null) {
             $deckObject = new DeckOfCards();
             $deckObject->deck();
+            $deckObject->shuffle();
             $session->set("deck", $deckObject->getDeck());
         }
         
@@ -86,23 +87,6 @@ class CardGameController extends AbstractController
         $session->set("player-hand", $playerHand);
         $session->set("bank-hand", $bankHand);
 
-        // totalt värde
-        $totalPlayer = $playerHand->getTotalValue();
-        $totalBank = $bankHand->getTotalValue();
-
-        // räkna ut vinst
-        if ($totalPlayer == $totalBank) {
-            $message = "Banken vann!";
-        } elseif ($totalBank > $totalPlayer) {
-            $message = "Banken vann!";
-        } elseif ($totalPlayer > 21) {
-            $message = "Banken vann!";
-        } elseif ($totalBank > 21) {
-            $message = "Spelaren vann!";
-        } else {
-            $message = "(ej färdig)";
-        }
-
         $data = [
             "aCard" => $aCard,
             "player_cards" => $playerHand->getString(),
@@ -127,6 +111,25 @@ class CardGameController extends AbstractController
         }
         else {
             $session->set("turn", "player");
+        }
+
+        if ($turn == "bank") {
+            // totalt värde
+            $totalPlayer = $playerHand->getTotalValue();
+            $totalBank = $bankHand->getTotalValue();
+
+            // räkna ut vinst
+            if ($totalPlayer == $totalBank) {
+                $message = "Banken vann!";
+            } elseif ($totalBank > $totalPlayer) {
+                $message = "Banken vann!";
+            } elseif ($totalPlayer > 21) {
+                $message = "Banken vann!";
+            } elseif ($totalBank > 21) {
+                $message = "Spelaren vann!";
+            } else {
+                $message = "(ej färdig)";
+            }   
         }
 
         $data = [
