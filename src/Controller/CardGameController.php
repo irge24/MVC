@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Card\Card;
 use App\Card\CardGraphic;
 use App\Card\DeckOfCards;
+use App\Card\CardHand; // Kmom03
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -30,10 +31,13 @@ class CardGameController extends AbstractController
     #[Route("/game/start", name: "start")]
     public function start(SessionInterface $session): Response
     {
+        $playerHand = $session->get("player-hand") ?? new \App\Card\CardHand();
+        $bankHand = $session->get("bank-hand") ?? new \App\Card\CardHand();
+
         $data = [
-            "turn" => $session->get("turn") ?? "player",  // standard: player
-            "player_cards" => $session->get("player-cards") ?? [],
-            "bank_cards" => $session->get("bank-cards") ?? [],
+            "turn" => $session->get("turn") ?? "player",
+            "player_cards" => $playerHand->getString(),
+            "bank_cards" => $bankHand->getString(),
             "message" => ""
         ];
 
@@ -62,67 +66,47 @@ class CardGameController extends AbstractController
         $cardDeck = $session->get("deck");
         $card = new Card();
         $result = $card->aCard($cardDeck);
-        $aCard = $result[0];
+        $cardString = $result[0];
+        $aCard = new Card();
+        $aCard->setValueString($cardString);
         $newDeck = $result[1];
+        $session->set("deck", $newDeck); // uppdaterar kortleken, tar bort dragna kort
 
-        // Uppdaterar kortleken, tar bort dragna kort
-        $session->set("current-deck", $newDeck);
+        $playerHand = $session->get("player-hand") ?? new CardHand();
+        $bankHand = $session->get("bank-hand") ?? new CardHand();
 
-        // Vems tur det är
-        if ($session->get("turn") === null) {
-            $session->set("turn", "player");
-            $playerCards = [];
-            $bankCards = [];
-            $session->set("player-cards", $playerCards);
-            $session->set("bank-cards", $bankCards);
-        }
-        
-        if ($session->get("turn") === "player") {
-            $playerCards = $session->get("player-cards");
-            $playerCards[] = $aCard;
-            $session->set("player-cards", $playerCards);
+        // vems tur
+        $turn = $session->get("turn") ?? "player";
+        if ($turn === "player") {
+            $playerHand->addCard($aCard);
         } else {
-            $bankCards = $session->get("bank-cards");
-            $bankCards[] = $aCard;
-            $session->set("bank-cards", $bankCards);
+            $bankHand->addCard($aCard);
         }
 
-        // Kontrollera antal kort och totalt värde
-        $playerCards = $session->get("player-cards");
-        $bankCards = $session->get("bank-cards");
+        $session->set("player-hand", $playerHand);
+        $session->set("bank-hand", $bankHand);
 
-        $totalPlayer = 0;
-        foreach ($playerCards as $card) {
-            $value = $card->getValue();
-            $totalPlayer += $value;
-        }
+        // totalt värde
+        $totalPlayer = $playerHand->getTotalValue();
+        $totalBank = $bankHand->getTotalValue();
 
-        if ($totalPlayer == 21) {
-            $message = "";
+        // räkna ut vinst
+        if ($totalPlayer == $totalBank) {
+            $message = "Banken vann!";
+        } elseif ($totalBank > $totalPlayer) {
+            $message = "Banken vann!";
         } elseif ($totalPlayer > 21) {
             $message = "Banken vann!";
-        } else {
-            // Fortsätt spela
-        }
-
-        $totalBank = 0;
-        foreach ($bankCards as $card) {
-            $value = $card->getValue();
-            $totalBank += $value;
-        }
-
-        if ($totalBank == 21) {
-            // Spelaren har blackjack!
         } elseif ($totalBank > 21) {
             $message = "Spelaren vann!";
         } else {
-            // Fortsätt spela
+            $message = "(ej färdig)";
         }
 
         $data = [
             "aCard" => $aCard,
-            "player_cards" => $session->get("player-cards"),
-            "bank_cards" => $session->get("bank-cards"),
+            "player_cards" => $playerHand->getString(),
+            "bank_cards" => $bankHand->getString(),
             "turn" => $session->get("turn"),
             "message" => $message ?? "",  // tom sträng om meddelande ej finns
         ];
@@ -135,6 +119,8 @@ class CardGameController extends AbstractController
     public function stop(SessionInterface $session): Response
     {
         $turn = $session->get("turn");
+        $playerHand = $session->get("player-hand") ?? new \App\Card\CardHand();
+        $bankHand = $session->get("bank-hand") ?? new \App\Card\CardHand();
 
         if ($turn == "player") {
             $session->set("turn", "bank");
@@ -144,7 +130,10 @@ class CardGameController extends AbstractController
         }
 
         $data = [
-            "turn" => $session->get("turn")
+            "turn" => $session->get("turn"),
+            "player_cards" => $playerHand->getString(),
+            "bank_cards" => $bankHand->getString(),
+            "message" => $message ?? "",  // tom sträng om meddelande ej finns
         ];
 
         return $this->render('start.html.twig', $data);
@@ -158,7 +147,7 @@ class CardGameController extends AbstractController
         $session->clear();
 
         $data = [
-            "turn" => "player",
+            "turn" => $session->get("turn") ?? "player",  // standard: player
             "player_cards" => [],
             "bank_cards" => [],
             "message" => "Ny omgång!"

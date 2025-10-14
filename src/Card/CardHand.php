@@ -1,6 +1,5 @@
 <?php
 
-// Från övningen pig-game
 
 namespace App\Card;
 
@@ -10,37 +9,25 @@ class CardHand
 {
     private $hand = [];
 
-    public function add(Dice $die): void
+    public function addCard(Card $aCard): void
     {
-        $this->hand[] = $die;
+        $this->hand[] = $aCard;
     }
 
-    public function roll(): void
+    public function getTotalValue(): int
     {
-        foreach ($this->hand as $die) {
-            $die->roll();
+        $total = 0;
+        foreach ($this->hand as $aCard) {
+            $total += $aCard->getNumberValue();
         }
-    }
-
-    public function getNumberDices(): int
-    {
-        return count($this->hand);
-    }
-
-    public function getValues(): array
-    {
-        $values = [];
-        foreach ($this->hand as $die) {
-            $values[] = $die->getValue();
-        }
-        return $values;
+        return $total;
     }
 
     public function getString(): array
     {
         $values = [];
-        foreach ($this->hand as $die) {
-            $values[] = $die->getAsString();
+        foreach ($this->hand as $aCard) {
+            $values[] = $aCard->getAsString();
         }
         return $values;
     }
