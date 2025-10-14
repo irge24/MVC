@@ -21,6 +21,9 @@
             <li>{{ card }}</li>
         {% endfor %}
     </ul>
+    {% if player_total is defined %}
+        <p>Spelarens poäng: {{ player_total }}</p>
+    {% endif %}
 
     {# Bankens kort #}
     <h2>Bankens kort:</h2>
@@ -29,6 +32,9 @@
             <li>{{ card }}</li>
         {% endfor %}
     </ul>
+    {% if bank_total is defined %}
+        <p>Bankens poäng: {{ bank_total }}</p>
+    {% endif %}
 
     <ul>
         <a href="{{ path('draw_card') }}">Ta kort</a>

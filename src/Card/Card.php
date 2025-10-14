@@ -28,7 +28,7 @@ class Card
     public function getNumberValue(): int
     {
 
-        $rank = substr($this->value, 0, -1); // tar bort sista tecknet (färgen), bara siffran kvar
+        $rank = mb_substr($this->value, 0, -1); // tar bort sista tecknet (färgen), bara siffran kvar
 
         // Returnera värde
         if ($rank === 'J') {

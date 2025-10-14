@@ -93,6 +93,8 @@ class CardGameController extends AbstractController
             "player_cards" => $playerHand->getString(),
             "bank_cards" => $bankHand->getString(),
             "turn" => $session->get("turn"),
+            "player_total" => $playerHand->getTotalValue() ?? "",
+            "bank_total" => $bankHand->getTotalValue() ?? "",
             "message" => $message ?? "",  // tom sträng om meddelande ej finns
         ];
 
@@ -120,23 +122,19 @@ class CardGameController extends AbstractController
             $totalBank = $bankHand->getTotalValue();
 
             // räkna ut vinst
-            if ($totalPlayer == $totalBank) {
-                $message = "Banken vann!";
-            } elseif ($totalBank > $totalPlayer) {
-                $message = "Banken vann!";
-            } elseif ($totalPlayer > 21) {
-                $message = "Banken vann!";
-            } elseif ($totalBank > 21) {
+            if ($totalBank > 21 && $totalPlayer <= 21) {
                 $message = "Spelaren vann!";
             } else {
-                $message = "(ej färdig)";
-            }   
+                $message = "Banken vann!";
+            }
         }
 
         $data = [
             "turn" => $session->get("turn"),
             "player_cards" => $playerHand->getString(),
             "bank_cards" => $bankHand->getString(),
+            "player_total" => $playerHand->getTotalValue() ?? "",
+            "bank_total" => $bankHand->getTotalValue() ?? "",
             "message" => $message ?? "",  // tom sträng om meddelande ej finns
         ];
 
