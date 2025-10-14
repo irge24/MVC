@@ -33,9 +33,10 @@ class CardGameController extends AbstractController
     {
         $playerHand = $session->get("player-hand") ?? new \App\Card\CardHand();
         $bankHand = $session->get("bank-hand") ?? new \App\Card\CardHand();
+        $session->set("turn", "player");
 
         $data = [
-            "turn" => $session->get("turn") ?? "player",
+            "turn" => "player",
             "player_cards" => $playerHand->getString(),
             "bank_cards" => $bankHand->getString(),
             "message" => ""
@@ -77,7 +78,7 @@ class CardGameController extends AbstractController
         $bankHand = $session->get("bank-hand") ?? new CardHand();
 
         // vems tur
-        $turn = $session->get("turn") ?? "player";
+        $turn = $session->get("turn");
         if ($turn === "player") {
             $playerHand->addCard($aCard);
         } else {
@@ -102,9 +103,9 @@ class CardGameController extends AbstractController
     #[Route("/game/stop", name: "stop")]
     public function stop(SessionInterface $session): Response
     {
-        $turn = $session->get("turn");
         $playerHand = $session->get("player-hand") ?? new \App\Card\CardHand();
         $bankHand = $session->get("bank-hand") ?? new \App\Card\CardHand();
+        $turn = $session->get("turn");
 
         if ($turn == "player") {
             $session->set("turn", "bank");
@@ -148,9 +149,10 @@ class CardGameController extends AbstractController
     {
         // Nollställ spelet
         $session->clear();
+        $session->set("turn", "player");
 
         $data = [
-            "turn" => $session->get("turn") ?? "player",  // standard: player
+            "turn" => "player",
             "player_cards" => [],
             "bank_cards" => [],
             "message" => "Ny omgång!"
