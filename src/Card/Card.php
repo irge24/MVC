@@ -32,13 +32,13 @@ class Card
 
         // Returnera värde
         if ($rank === 'J') {
-        return 11;
+            return 11;
         } elseif ($rank === 'Q') {
-        return 12;
+            return 12;
         } elseif ($rank === 'K') {
-        return 13;
+            return 13;
         } elseif ($rank === 'A') {
-        return 14;
+            return 14;
         } else {
             return (int)$rank;
         }

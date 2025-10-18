@@ -92,4 +92,20 @@ class CardJsonController extends AbstractController
             'amount' => count($deck)
         ]);
     }
+
+    #[Route("/api/game", name: "api_game", methods: ['GET'])]
+    public function game(SessionInterface $session): Response
+    {
+        $playerHand = $session->get("player-hand");
+        $bankHand = $session->get("bank-hand");
+        $totalBank = $bankHand->getTotalValue();
+        $totalPlayer = $playerHand->getTotalValue();
+
+        return $this->json([
+            "player_cards" => $playerHand->getString(),
+            "bank_cards" => $bankHand->getString(),
+            "player_total" => $playerHand->getTotalValue() ?? "",
+            "bank_total" => $bankHand->getTotalValue() ?? "",
+        ]);
+    }
 }
