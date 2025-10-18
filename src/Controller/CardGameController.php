@@ -31,8 +31,12 @@ class CardGameController extends AbstractController
     #[Route("/game/start", name: "start")]
     public function start(SessionInterface $session): Response
     {
+        /** @var CardHand $playerHand */
         $playerHand = $session->get("player-hand") ?? new \App\Card\CardHand();
+        
+        /** @var CardHand $bankHand */
         $bankHand = $session->get("bank-hand") ?? new \App\Card\CardHand();
+
         $session->set("turn", "player");
 
         $data = [
@@ -54,8 +58,10 @@ class CardGameController extends AbstractController
 
     // Kmom03
     #[Route("/game/draw_card", name: "draw_card")]
-    public function draw_card(SessionInterface $session): Response
+    public function drawCard(SessionInterface $session): Response
     {
+
+        $message = "";
 
         // nytt kortspel ifall det inte finns
         if ($session->get("deck") === null) {
@@ -66,17 +72,22 @@ class CardGameController extends AbstractController
         }
 
         // spelare tar ett kort, tas bort från föregående kortspel
+        /** @var array<string> $cardDeck */
         $cardDeck = $session->get("deck");
         $card = new Card();
         $result = $card->aCard($cardDeck);
         $cardString = $result[0];
         $aCard = new Card();
-        $aCard->setValueString($cardString);
+        $aCard->setValueString((string)$cardString);
         $newDeck = $result[1];
         $session->set("deck", $newDeck); // uppdaterar kortleken
 
         // spelarens och bankens respektive kort, spelaren drar nya kort
+
+        /** @var CardHand $playerHand */
         $playerHand = $session->get("player-hand") ?? new CardHand();
+
+        /** @var CardHand $bankHand */
         $bankHand = $session->get("bank-hand") ?? new CardHand();
         $playerHand->addCard($aCard);
 
@@ -88,9 +99,9 @@ class CardGameController extends AbstractController
             "player_cards" => $playerHand->getString(),
             "bank_cards" => $bankHand->getString(),
             "turn" => $session->get("turn"),
-            "player_total" => $playerHand->getTotalValue() ?? "",
-            "bank_total" => $bankHand->getTotalValue() ?? "",
-            "message" => $message ?? "",  // tom sträng om meddelande ej finns
+            "player_total" => $playerHand->getTotalValue(),
+            "bank_total" => $bankHand->getTotalValue(),
+            "message" => $message
         ];
 
         return $this->render('start.html.twig', $data);
@@ -100,7 +111,13 @@ class CardGameController extends AbstractController
     #[Route("/game/stop", name: "stop")]
     public function stop(SessionInterface $session): Response
     {
+        $message = "";
+
+        /** @var CardHand $playerHand */
         $playerHand = $session->get("player-hand");
+
+        /** @var CardHand $bankHand */
+
         $bankHand = $session->get("bank-hand") ?? new \App\Card\CardHand();
         $turn = $session->get("turn");
         $totalBank = $bankHand->getTotalValue();
@@ -112,12 +129,13 @@ class CardGameController extends AbstractController
 
         while ($totalBank < 17) {
 
+            /** @var array<string> $cardDeck */
             $cardDeck = $session->get("deck");
             $card = new Card();
             $result = $card->aCard($cardDeck);
             $cardString = $result[0];
             $aCard = new Card();
-            $aCard->setValueString($cardString);
+            $aCard->setValueString((string)$cardString);
             $newDeck = $result[1];
 
             $bankHand->addCard($aCard);
@@ -141,9 +159,9 @@ class CardGameController extends AbstractController
             "turn" => $session->get("turn"),
             "player_cards" => $playerHand->getString(),
             "bank_cards" => $bankHand->getString(),
-            "player_total" => $playerHand->getTotalValue() ?? "",
-            "bank_total" => $bankHand->getTotalValue() ?? "",
-            "message" => $message ?? "",  // tom sträng om meddelande ej finns
+            "player_total" => $playerHand->getTotalValue(),
+            "bank_total" => $bankHand->getTotalValue(),
+            "message" => $message
         ];
 
         return $this->render('start.html.twig', $data);
@@ -151,7 +169,7 @@ class CardGameController extends AbstractController
 
     // Kmom03
     #[Route("/game/new_game", name: "new_game")]
-    public function new_game(SessionInterface $session): Response
+    public function newGame(SessionInterface $session): Response
     {
         // Nollställ spelet
         $session->clear();
@@ -174,7 +192,7 @@ class CardGameController extends AbstractController
     }
 
     #[Route("/session/delete", name: "session_delete")]
-    public function session_delete(SessionInterface $session): Response
+    public function sessionDelete(SessionInterface $session): Response
     {
         $session->clear();
 
@@ -196,6 +214,7 @@ class CardGameController extends AbstractController
             $session->set("deck", $cardDeck->getDeck());
         }
 
+        /** @var array<string> $cardDeck */
         $cardDeck = $session->get("deck");
 
         $data = [
@@ -208,14 +227,14 @@ class CardGameController extends AbstractController
     #[Route("/card/deck/shuffle", name: "shuffle")]
     public function shuffle(SessionInterface $session): Response
     {
-        $cardDeck = new DeckOfCards();
-        $cardDeck->shuffle();
-        $cardDeck->getDeck();
+        $deckObject = new DeckOfCards();
+        $deckObject->shuffle();
+        $cardDeck = $deckObject->getDeck();
 
-        $session->set("deck", $cardDeck->getDeck());
+        $session->set("deck", $cardDeck);
 
         $data = [
-            "cardDeck" => $cardDeck->getDeck()
+            "cardDeck" => $cardDeck
         ];
 
         return $this->render('card/deck/shuffle.html.twig', $data);
@@ -225,11 +244,14 @@ class CardGameController extends AbstractController
     public function draw(SessionInterface $session): Response
     {
 
+        /** @var array<string> $cardDeck */
         $cardDeck = $session->get("deck");
         $card = new Card();
         $result = $card->aCard($cardDeck);
         $aCard = $result[0];
         $newDeck = $result[1];
+
+        /** @var array<string> $newDeck */
         $amountCards = count($newDeck);
 
         $session->set("deck", $newDeck);
@@ -244,9 +266,10 @@ class CardGameController extends AbstractController
     }
 
     #[Route("/card/deck/draw/{num<\d+>}", name: "draw_number")]
-    public function draw_number(SessionInterface $session, int $num): Response
+    public function drawNumber(SessionInterface $session, int $num): Response
     {
 
+        /** @var array<string> $cardDeck */
         $cardDeck = $session->get("deck");
         $amountCards = $session->get("amount_cards");
         $card = new Card();

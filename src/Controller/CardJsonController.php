@@ -26,7 +26,7 @@ class CardJsonController extends AbstractController
         $cardDeck = [];
         for ($i = 1; $i <= 52; $i++) {
             $card = new CardGraphic();
-            $card->setValue($i);
+            $card->setValueString((string)$i);
             $cardDeck[] = $card->getAsString();
         }
 
@@ -36,10 +36,6 @@ class CardJsonController extends AbstractController
         );
 
         return $response;
-
-        return $this->json([
-            'deck' => $deck->getDeck()
-        ]);
     }
 
     #[Route("/api/deck/shuffle", name: "api_shuffle", methods: ['POST'])]
@@ -57,8 +53,11 @@ class CardJsonController extends AbstractController
     #[Route("/api/deck/draw", name: "api_draw", methods: ['POST'])]
     public function draw(SessionInterface $session): Response
     {
+        /** @var array<string> $deck */
         $deck = $session->get("deck", []);
         $card = new Card();
+
+        /** @var array<string> $newDeck */
         [$aCard, $newDeck] = $card->aCard($deck);
 
         $session->set("deck", $newDeck);
@@ -70,8 +69,9 @@ class CardJsonController extends AbstractController
     }
 
     #[Route("/api/deck/draw/{num<\d+>}", name: "api_draw_number", methods: ['POST'])]
-    public function draw_number(SessionInterface $session, int $num): Response
+    public function drawNumber(SessionInterface $session, int $num): Response
     {
+        /** @var array<string> $deck */
         $deck = $session->get("deck", []);
         $card = new Card();
 
@@ -96,16 +96,21 @@ class CardJsonController extends AbstractController
     #[Route("/api/game", name: "api_game", methods: ['GET'])]
     public function game(SessionInterface $session): Response
     {
+
+        /** @var CardHand $playerHand */
         $playerHand = $session->get("player-hand");
+
+        /** @var CardHand $bankHand */
         $bankHand = $session->get("bank-hand");
+
         $totalBank = $bankHand->getTotalValue();
         $totalPlayer = $playerHand->getTotalValue();
 
         return $this->json([
             "player_cards" => $playerHand->getString(),
             "bank_cards" => $bankHand->getString(),
-            "player_total" => $playerHand->getTotalValue() ?? "",
-            "bank_total" => $bankHand->getTotalValue() ?? "",
+            "player_total" => $totalBank,
+            "bank_total" => $totalPlayer
         ]);
     }
 }

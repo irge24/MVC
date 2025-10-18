@@ -6,7 +6,8 @@ use App\Card\Card;
 
 class CardHand
 {
-    private $hand = [];
+    /** @var Card[] */
+    private array $hand = [];
 
     public function addCard(Card $aCard): void
     {
@@ -22,6 +23,9 @@ class CardHand
         return $total;
     }
 
+    /**
+     * @return string[]
+     */
     public function getString(): array
     {
         $values = [];

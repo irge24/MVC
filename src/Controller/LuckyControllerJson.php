@@ -25,13 +25,13 @@ class LuckyControllerJson extends AbstractController
             'quote3' => 'Be strong!'
         ];
 
-        $random_quote = array_rand($data, 1);
+        $randomQuote = array_rand($data, 1);
 
         $date = date("l jS \of F Y h:i:s A");
 
         $responseData = [
             'date' => $date,
-            'quote' => $data[$random_quote]
+            'quote' => $data[$randomQuote]
         ];
 
         $response = new JsonResponse($responseData);

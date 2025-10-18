@@ -4,7 +4,8 @@ namespace App\Card;
 
 class CardGraphic extends Card
 {
-    private $values = [
+    /** @var string[] */
+    private array $values = [
         'A',
         '2',
         '3',
@@ -20,7 +21,8 @@ class CardGraphic extends Card
         'K'
     ];
 
-    private $colours = [
+    /** @var string[] */
+    private array $colours = [
         '♠',
         '♥',
         '♦',
@@ -35,8 +37,11 @@ class CardGraphic extends Card
     public function getAsString(): string
     {
 
-        $a_card = $this->values[($this->value - 1) % 13] . $this->colours[floor(($this->value - 1) / 13)];
+        $val = (int) $this->value; // säkerställ int
 
-        return $a_card;
+        $aCard = $this->values[($val - 1) % 13]
+                . $this->colours[floor(($val - 1) / 13)];
+
+        return $aCard;
     }
 }
