@@ -2,9 +2,17 @@
 
 namespace App\Card;
 
+/**
+ * Class CardGraphic
+ *
+ * Ett spelkort med värde och färg i grafisk form.
+ * Ärver från klassen Card.
+ */
 class CardGraphic extends Card
 {
-    /** @var string[] */
+    /** 
+     * @var string[] $values Kortens värden.
+     */
     private array $values = [
         'A',
         '2',
@@ -21,7 +29,9 @@ class CardGraphic extends Card
         'K'
     ];
 
-    /** @var string[] */
+    /** 
+     * @var string[] $colours Kortens färger.
+     */
     private array $colours = [
         '♠',
         '♥',
@@ -29,11 +39,19 @@ class CardGraphic extends Card
         '♣'
     ];
 
+    /**
+     * Skapar nytt grafiskt kortobjekt.
+     */
     public function __construct()
     {
         parent::__construct();
     }
 
+    /**
+     * Returnerar kortet som sträng.
+     *
+     * @return string $aCard Kortet.
+     */
     public function getAsString(): string
     {
 

@@ -43,17 +43,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Card\\CardGraphic",
             "name": "CardGraphic",
-            "summary": "",
+            "summary": "Class\u0020CardGraphic",
             "url": "classes/App-Card-CardGraphic.html"
         },                {
             "fqsen": "\\App\\Card\\CardGraphic\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Skapar\u0020nytt\u0020grafiskt\u0020kortobjekt.",
             "url": "classes/App-Card-CardGraphic.html#method___construct"
         },                {
             "fqsen": "\\App\\Card\\CardGraphic\u003A\u003AgetAsString\u0028\u0029",
             "name": "getAsString",
-            "summary": "",
+            "summary": "Returnerar\u0020kortet\u0020som\u0020str\u00E4ng.",
             "url": "classes/App-Card-CardGraphic.html#method_getAsString"
         },                {
             "fqsen": "\\App\\Card\\CardGraphic\u003A\u003A\u0024values",
