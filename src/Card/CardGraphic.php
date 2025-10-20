@@ -10,7 +10,7 @@ namespace App\Card;
  */
 class CardGraphic extends Card
 {
-    /** 
+    /**
      * @var string[] $values Kortens värden.
      */
     private array $values = [
@@ -29,7 +29,7 @@ class CardGraphic extends Card
         'K'
     ];
 
-    /** 
+    /**
      * @var string[] $colours Kortens färger.
      */
     private array $colours = [

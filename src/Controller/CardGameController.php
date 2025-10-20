@@ -33,7 +33,7 @@ class CardGameController extends AbstractController
     {
         /** @var CardHand $playerHand */
         $playerHand = $session->get("player-hand") ?? new \App\Card\CardHand();
-        
+
         /** @var CardHand $bankHand */
         $bankHand = $session->get("bank-hand") ?? new \App\Card\CardHand();
 
