@@ -13,7 +13,7 @@ class CardHandTest extends TestCase
      * Construct object and verify that the object has the expected
      * properties, use no arguments.
      */
-    public function testCreateCard()
+    public function testCreateCard(): void
     {
         $card = new Card();
         $this->assertInstanceOf("\App\Card\Card", $card);

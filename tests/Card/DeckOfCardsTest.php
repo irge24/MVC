@@ -13,7 +13,7 @@ class DeckOfCardsTest extends TestCase
      * Construct object and verify that the object has the expected
      * properties, use no arguments.
      */
-    public function testCreateCard()
+    public function testCreateCard(): void
     {
         $deck = new DeckOfCards();
         $this->assertInstanceOf("\App\Card\DeckOfCards", $deck);

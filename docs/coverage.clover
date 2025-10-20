@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1760952769">
-  <project timestamp="1760952769">
+<coverage generated="1760952955">
+  <project timestamp="1760952955">
     <file name="/Users/irmagerguri/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="11" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="20" coveredstatements="20" elements="26" coveredelements="26"/>
