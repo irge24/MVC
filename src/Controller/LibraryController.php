@@ -10,7 +10,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-
 final class LibraryController extends AbstractController
 {
     #[Route('/library', name: 'library')]
@@ -24,7 +23,8 @@ final class LibraryController extends AbstractController
     #[Route("/library/create", name: "library_create", methods: ["GET", "POST"])]
     public function createBook(
         Request $request,
-        ManagerRegistry $doctrine): Response {
+        ManagerRegistry $doctrine
+    ): Response {
         $entityManager = $doctrine->getManager();
 
         if ($request->isMethod('GET')) {
@@ -60,13 +60,13 @@ final class LibraryController extends AbstractController
 
         foreach ($books as $book) {
 
-            $allBooks[] = 
+            $allBooks[] =
             [
-            'id' => $book->getId(), 
-            'titel' => $book->getTitel(), 
+            'id' => $book->getId(),
+            'titel' => $book->getTitel(),
             'ISBN' => $book->getISBN(),
             'författare' => $book->getFörfattare(),
-            'bild' => $book->getBild() 
+            'bild' => $book->getBild()
             ];
         }
 
@@ -96,7 +96,8 @@ final class LibraryController extends AbstractController
     public function deleteBook(
         Request $request,
         BibliotekRepository $bibliotekRepository,
-        ManagerRegistry $doctrine): Response {
+        ManagerRegistry $doctrine
+    ): Response {
         $entityManager = $doctrine->getManager();
         $books = $bibliotekRepository
             ->findAll();
@@ -104,13 +105,13 @@ final class LibraryController extends AbstractController
         $allBooks = [];
         foreach ($books as $book) {
 
-            $allBooks[] = 
+            $allBooks[] =
             [
-            'id' => $book->getId(), 
-            'titel' => $book->getTitel(), 
+            'id' => $book->getId(),
+            'titel' => $book->getTitel(),
             'ISBN' => $book->getISBN(),
             'författare' => $book->getFörfattare(),
-            'bild' => $book->getBild() 
+            'bild' => $book->getBild()
             ];
         }
 
@@ -123,7 +124,7 @@ final class LibraryController extends AbstractController
             return $this->render('library/delete.html.twig', $data);
         }
 
-        $id = $request->request->get('id'); 
+        $id = $request->request->get('id');
         $book = $bibliotekRepository->find($id);
         $entityManager->remove($book);
         $entityManager->flush();
@@ -140,13 +141,13 @@ final class LibraryController extends AbstractController
         $allBooks = [];
         foreach ($books as $book) {
 
-            $allBooks[] = 
+            $allBooks[] =
             [
-            'id' => $book->getId(), 
-            'titel' => $book->getTitel(), 
+            'id' => $book->getId(),
+            'titel' => $book->getTitel(),
             'ISBN' => $book->getISBN(),
             'författare' => $book->getFörfattare(),
-            'bild' => $book->getBild() 
+            'bild' => $book->getBild()
             ];
         }
 
@@ -195,7 +196,7 @@ final class LibraryController extends AbstractController
         return $this->redirectToRoute('library_update');
     }
 
-# FRÅN ÖVNINGEN
+    # FRÅN ÖVNINGEN
 
     #[Route('/product/view', name: 'product_view_all')]
     public function viewAllProduct(
