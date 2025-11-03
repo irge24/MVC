@@ -131,25 +131,52 @@ final class LibraryController extends AbstractController
         return $this->redirectToRoute('library_show_all');
     }
 
-    #[Route('/product/update/{id}/{value}', name: 'product_update')]
-    public function updateProduct(
-        ManagerRegistry $doctrine,
-        int $id,
-        int $value
-    ): Response {
-        $entityManager = $doctrine->getManager();
-        $product = $entityManager->getRepository(Product::class)->find($id);
+    #[Route("/library/update", name: "library_update")]
+    public function updateBook(
+        Request $request,
+        BibliotekRepository $bibliotekRepository,
+        ManagerRegistry $doctrine): Response {
+        $books = $bibliotekRepository
+            ->findAll();
 
-        if (!$product) {
-            throw $this->createNotFoundException(
-                'No product found for id '.$id
-            );
+        $allBooks = [];
+        foreach ($books as $book) {
+
+            $allBooks[] = 
+            [
+            'id' => $book->getId(), 
+            'titel' => $book->getTitel(), 
+            'ISBN' => $book->getISBN(),
+            'författare' => $book->getFörfattare(),
+            'bild' => $book->getBild() 
+            ];
         }
 
-        $product->setValue($value);
-        $entityManager->flush();
+        $data = [
+            'books' => $allBooks
+        ];
 
-        return $this->redirectToRoute('product_show_all');
+        return $this->render('library/update.html.twig', $data);
+    }
+
+    #[Route('/library/update/{id}', name: 'library_update_book', methods: ["GET", "POST"])]
+    public function updateOneBook(
+        Request $request,
+        ManagerRegistry $doctrine,
+        int $id,
+    ): Response {
+        $entityManager = $doctrine->getManager();
+        $product = $entityManager->getRepository(Bibliotek::class)->find($id);
+
+        if ($request->isMethod('GET')) {
+            // visa formuläret
+            return $this->render('library/update_one.html.twig', $data);
+        }
+
+        $id = $request->request->get('id');
+        $updateBook = $bibliotekRepository->updateBook($id);
+
+        return $this->redirectToRoute('library/update.html.twig');
     }
 
 # FRÅN ÖVNINGEN
