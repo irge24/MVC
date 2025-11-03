@@ -16,30 +16,6 @@ class BibliotekRepository extends ServiceEntityRepository
         parent::__construct($registry, Bibliotek::class);
     }
 
-// TAGEN FRÅN ÖVNINGEN - MODIFIERA FÖR UPDATE
-
-    /**
-     * Update book based on ID.
-     * 
-     * @return [][] Returns an array of arrays (i.e. a raw data set)
-     */
-    public function findByMinimumValue2($id): array
-    {
-        $conn = $this->getEntityManager()->getConnection();
-
-        $sql = '
-            UPDATE tabellnamn
-            SET kolumn1 = nytt_värde1,
-                kolumn2 = nytt_värde2,
-                ...
-            WHERE id = $id
-        ';
-
-        $resultSet = $conn->executeQuery($sql, ['value' => $value]);
-
-        return $resultSet->fetchAllAssociative();
-    }
-
     //    /**
     //     * @return Bibliotek[] Returns an array of Bibliotek objects
     //     */

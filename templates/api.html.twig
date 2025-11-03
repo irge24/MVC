@@ -7,6 +7,8 @@
     <li><a href="{{ path('api_quote') }}">Quote - Get a random quote</a></li>
     <li><a href="{{ path('api_deck') }}">Deck - A whole card deck sorted by colour and value</a></li>
     <li><a href="{{ path('api_game') }}">Game - Check current score for game</a></li>
+    <li><a href="{{ path('library_show_all_books') }}">Library - All books</a></li>
+    <li><a href="{{ path('book_isbn', {'isbn': '9781098155438'}) }}">Show one book (default ISBN)</a></li>
 </ul>
 
 <button id="shuffle">Shuffle deck</button>

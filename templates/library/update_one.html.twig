@@ -9,16 +9,27 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Uppdatera</h1>
+    <h1>Uppdatera bok</h1>
 
-    <form action="{{ path('library_update_book') }}" method="POST">
-        <input type="text" id="id" name="id" placeholder="ID" required>
-        <input type="text" id="titel" name="titel" placeholder="Titel" required>
-        <input type="text" id="ISBN" name="ISBN" placeholder="ISBN" required>
-        <input type="text" id="författare" name="författare" placeholder="Författare" required>
-        <input type="text" id="bild" name="bild" placeholder="Bild">
-        <button type="submit">Skicka</button>
+    <form action="{{ path('library_update_book', { id: book.id }) }}" method="POST">
+        <label for="id">ID:</label>
+        <input type="text" id="id" name="id" value="{{ book.id }}" readonly>
+
+        <label for="titel">Titel:</label>
+        <input type="text" id="titel" name="titel" value="{{ book.titel }}" required>
+
+        <label for="ISBN">ISBN:</label>
+        <input type="text" id="ISBN" name="ISBN" value="{{ book.ISBN }}" required>
+
+        <label for="författare">Författare:</label>
+        <input type="text" id="författare" name="författare" value="{{ book.författare }}" required>
+
+        <label for="bild">Bild (länk):</label>
+        <input type="text" id="bild" name="bild" value="{{ book.bild }}">
+
+        <button type="submit">Spara ändringar</button>
     </form>
+
 
     <pre id="output"></pre>
 </div>

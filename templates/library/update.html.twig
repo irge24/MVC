@@ -28,13 +28,10 @@
             <td>{{ book.titel }}</td>
             <td>{{ book.ISBN }}</td>
             <td>{{ book.författare }}</td>
+            <td><a href="{{ book.bild }}" target="_blank">Visa bild</a></td>
             <td>
-                <a href="{{ book.bild }}" target="_blank">Visa bild</a>
-            </td>
-            <td>
-                <form action="{{ path('library_update_book', {id: book.id}) }}" method="POST">
-                <input type="hidden" name="id" value="{{ book.id }}">
-                <button type="submit">Uppdatera</button>
+                <form action="{{ path('library_update_book', {id: book.id}) }}" method="GET">
+                    <button type="submit">Uppdatera</button>
                 </form>
             </td>
 

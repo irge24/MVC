@@ -133,11 +133,9 @@ final class LibraryController extends AbstractController
 
     #[Route("/library/update", name: "library_update")]
     public function updateBook(
-        Request $request,
         BibliotekRepository $bibliotekRepository,
-        ManagerRegistry $doctrine): Response {
-        $books = $bibliotekRepository
-            ->findAll();
+    ): Response {
+        $books = $bibliotekRepository->findAll();
 
         $allBooks = [];
         foreach ($books as $book) {
@@ -166,17 +164,35 @@ final class LibraryController extends AbstractController
         int $id,
     ): Response {
         $entityManager = $doctrine->getManager();
-        $product = $entityManager->getRepository(Bibliotek::class)->find($id);
+        $book = $entityManager->getRepository(Bibliotek::class)->find($id);
 
+        // visa formuläret med befintliga värden
         if ($request->isMethod('GET')) {
-            // visa formuläret
-            return $this->render('library/update_one.html.twig', $data);
+            return $this->render('library/update_one.html.twig', [
+                'book' => [
+                    'id' => $book->getId(),
+                    'titel' => $book->getTitel(),
+                    'ISBN' => $book->getISBN(),
+                    'författare' => $book->getFörfattare(),
+                    'bild' => $book->getBild()
+                ]
+            ]);
         }
 
-        $id = $request->request->get('id');
-        $updateBook = $bibliotekRepository->updateBook($id);
+        // POST
+        $titel = $request->request->get('titel', '');
+        $isbn = $request->request->get('ISBN', '');
+        $författare = $request->request->get('författare', '');
+        $bild = $request->request->get('bild', '');
 
-        return $this->redirectToRoute('library/update.html.twig');
+        $book->setTitel((string) $titel);
+        $book->setISBN((string) $isbn);
+        $book->setFörfattare((string) $författare);
+        $book->setBild((string) $bild);
+
+        $entityManager->flush();  // actually executes the queries (i.e. the INSERT query)
+
+        return $this->redirectToRoute('library_update');
     }
 
 # FRÅN ÖVNINGEN
