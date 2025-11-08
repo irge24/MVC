@@ -196,6 +196,14 @@ final class LibraryController extends AbstractController
         return $this->redirectToRoute('library_update');
     }
 
+    # KMOM06
+
+    #[Route('/metrics', name: 'metrics')]
+    public function metrics(): Response
+    {
+        return $this->render('metrics.html.twig');
+    }
+
     # FRÅN ÖVNINGEN
 
     #[Route('/product/view', name: 'product_view_all')]

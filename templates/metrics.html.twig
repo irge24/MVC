@@ -1,0 +1,113 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Metrics{% endblock %}
+
+{% block body %}
+    <h1>Metrics analys</h1>
+
+    <h3>Introduktion - De 6 C:na</h3>
+
+    <p>Codestyle: Codestyle handlar om kodens utseende och struktur, alltså
+    själva koden man direkt ser när man går in i dess filer. Det handlar om att 
+    skriva ren kod som följer programmeringsspråket regler gällande exempelvis indentering, 
+    mellanslag, hur variabler skrivs i form av tecken eller stora/små bokstäver osv.
+    För god kodkvalité vill man uppnå ren och lättläst kod, som är enkel att läsa och följa. </p>
+
+    <p>Coverage: Coverage handlar om testning av koden med exempelvis PHPUnit. 
+    För god kodkvalité vill man uppnå ett högt värde här, som visar att koden har 
+    bra och hög testtäckning. Det ökar kodens tillförlitlighet, då testerna visar
+    ifall det finns fel eller buggar, som bör fixas, eller som kan påverka koden negativt.
+    Om man kollar på min befintliga kod, innan ändringar, så visar phpmetrics att jag har 5 testfall 
+    och ca 28% av mina klasser testas. Detta då jag vid testningen inte gjorde tester på alla klasser,
+    samt att jag lagt till ny kod i efterhand med fler klasser. Det är alltså låg testtäckning, då endast
+    en begränsad andel av klasserna testas, och kvalitén kan därmed förbättras genom att lägga till fler tester.</p>
+
+    <p>Complexity: Complexity handlar om hur svår och komplicerad koden är - bra kod 
+    bör vara lätt, enkel och tydlig, vilket är någonting man som programmerare ska sträva efter när man
+    skriver den. Man ska försöka hålla det så enkelt som möjligt, samtidigt som man tänker på att
+    skriva "DRY code" (don't repeat yourself). Det gör det också lättare för andra att läsa koden
+    och att rätta den, eller utöka den, vid behov. När man kollar via phpmetrics har min kod
+    låg komplexitet på 2.89, vilket är vad man vill sträva efter, då hög komplexitet tyder 
+    på komplicerad kod. Ett lågt värde innebär att koden är enkel, tydlig och strukturerad bra.</p>
+    
+    <p>Cohesion: Cohesion fokuserar på klassernas struktur och kollar hur sammanhängande
+    de är. Bra kvalité uppnås genom att strukturera klasserna så att de fokuserar på en aspekt
+    och inte innefattar flera olika saker, så att det blir rörigt. Respektive klass ska 
+    begränsas till dess syfte och inte blandas med annat. För god kodkvalité vill man därmed
+    uppnå hög cohension, vilket betyder att klasserna är uppdelade och sammanhängande på ett bra sätt,
+    där varje klass har sitt individuella ansvarsområde och inte mer utöver det.</p>
+    
+    <p>Coupling: Coupling har också fokus på klasserna, likt cohension. Här ligger
+    fokus på hur beroende klasserna är av varandra. När man skriver kod vill man sträva
+    efter låg coupling, alltså att dela upp klasserna korrekt och helst att de ska vara så
+    oberoende av varandra som möjligt. Ifall olika klasser är beroende av varandra i större
+    utsträckning kan det skapa svårigheter och t.o.m. att koden kraschar, ifall man behöver göra 
+    ändringar i en viss klass. Detta eftersom deras beroenden av varandra gör att även små ändringar
+    kan påverka andra klasser och det kan leda till fel i hela kedjan, vilket gör jobbet 
+    mer kompplicerat och felsökning kan bli svårare. Min phpmetrics visar på låg till måttliga värden
+    under coupling, vilket innebär att det finns visst samarbete mellan mina klasser, medan de låga 
+    värden tyder på att klasserna i stor utsträckning också är oberoende av varandra, vilket är positivt.</p>
+
+    <p>CRAP: CRAP står för "Change Risk Anti-Patterns". CRAP kombinerar kodens komplexitet
+    och testtäckning för att identifiera kod som både är alltför komplicerad och dåligt testad, 
+    vilket kan vara riskabelt att ha med bland sin kodstruktur. Här pratas det också om "kodlukt"; 
+    dålig kodlukt betyder att man behöver förbättra koden och få lägre värde, för att få bra kodlukt
+    och på så sätt både låg komplexitet och bra testtäckning i sina klasser och metoder, för
+    att uppnå bra kvalité.</p>
+
+    <h3>Phpmetrics</h3>
+
+    <a href="{{ asset('images/phpmetrics.png') }}">
+        <img src="{{ asset('images/phpmetrics.png') }}" alt="">
+    </a>
+
+    <p>Min phpmetrics visar generellt sett på bra kod utifrån värdena, men med förbättringspotential
+    på ett par ställen. Värdena visar att, baserat på totalt antal rader kod, att jag har ett litet/medelstort projekt, 
+    varav majoriteten av rader kod är logiska rader kod. Ungefär en fjärdedel av raderna innefattar kommentarer.
+    Jag personligen föredrar att ha en del kommentarer, där jag känner att det behövs, så att jag kan gå tillbaka och läsa
+    vad jag har gjort, hur jag har tänkt och vad min kod gör och innebär. Om jag känner att det behövs ännu mer tydlighet,
+    antingen för mig själv eller för någon annan som läser koden, skulle jag kunna öka antalet kommentarer för att dokumentera
+    och förklara min kod ytterligare.</p>
+    
+    <p>Vidare till analysen av mina klasser och metoder har jag 18 klasser och 70 metoder; 
+    ungefär 4 metoder per klass vilket verkar vara ett rimligt antal, varken alltför mycket eller lite. Jag har en cohension på 1.5, 
+    vilket skulle kunna ses som en svag punkt. Jag skulle kunna dela upp och strukturera mina klasser ännu mer och ge dem ännu mer
+    fokuserat ansvarsområde. Efter cohension läser jag att mina värden för 
+    coupling är låga/måttliga. Även här kan det finnas en eventuell svag punkt, där jag skulle kunna göra klasserna ännu mer
+    oberoende av varandra. Complexity visar på låga och positiva värden, vilket tyder på 
+    enkel och tydlig kod.</p>
+
+    <p>Slutligen finns det några errors och warnings jag kan kolla på och eventuellt få bort, ifall
+    jag anser det vara behövligt och relevant. Det kan ses som en svag punkt. Inga kritiska fel dock. 
+    Tillsammans med detta ser jag också att jag har låg testtäckning, som även detta är en svag punkt
+    och bland de saker jag bör förbättra och fokusera mest på, för att öka tillförlitligheten av min kod. 
+    Min täckning ligger just nu på cirka 28%, vilket är lågt och bör höjas.</p>
+
+    <h3>Scutinizer</h3>
+
+    <h3>Förbättringar</h3>
+
+    <h3>Diskussion</h3>
+
+    <p>Jag tänker att man absolut kan jobba aktivt  med kodkvalitet och "clean code" 
+    på detta sätt som vi gjorde i denna uppgift. Jag upplevde det väldigt strukturerat och effektivt,
+    där man först analyserar sin kod från flera olika värden, parametrar och aspekter, tillsammans 
+    med olika verktyg, där man senare går vidare till att få en överblick och planera ett upplägg
+    för de förbättringar man kan göra. Till sist implementerar man dessa teoretiska förbättringar i koden
+    och uppnår förhoppningsvis bättre värden och bättre kod överlag. Jag skulle baserat på detta alltså
+    säga att fördelarna är att det är strukturerat; man kan gå tillbaka till vad man skrivit om sina värden
+    och vad man ska förbättra, så att man steg för steg kan ta sig igenom sin kod. Man har allt på en 
+    och samma plats och dokumenterar varje steg genom sin analys och förbättring, vilket även kan vara 
+    gynnande för andra som vill läsa och inspireras, speciellt andra programmerare och studenter. 
+    Det jag dock tänker kan vara en nackdel är att det tar tid och att alla kanske inte känner att det är nödvändigt
+    att analysera så mycket, utan att det räcker med att kolla igenom sina värden och sedan förbättra koden
+    direkt därifrån. I synnerhet är det nog inte nödvändigt med en större analys ifall man bara har ett litet projekt 
+    och därmed inte så mycket kod att jobba med. Det kan alltså ta en del tid och energi, vilket 
+    kanske inte alltid behövs eller anses vara nödvändigt. Utifrån mina tankar kring dessa nackdelar besvaras delvis
+    frågan om andra sätt att jobba mot "clean code". Jag menar alltså att vissa programmerare kan föredra att 
+    jobba mer praktiskt och mer effektivt, genom att kort analysera sin kod och därmed direkt börja förbättra utifrån 
+    de värden och fel de ser. Det behöver nödvändigtvis inte behövas en teoretisk genomgång av värdena innan man början, 
+    utan man kan jobba praktiskt med sina implementationer direkt. Man kan även ta hjälp av någon annan för 
+    att få feedback och en skriftlig eller muntlig analys.</p>
+
+{% endblock %}

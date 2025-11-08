@@ -7,6 +7,17 @@ SIdan är byggd med Symfony-ramverket och innehåller en enkel struktur med rout
 
 ---
 
+## Scrutinizer - KMOM06
+
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/irge24/MVC/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/irge24/MVC/?branch=main)
+
+[![Code Coverage](https://scrutinizer-ci.com/g/irge24/MVC/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/irge24/MVC/?branch=main)
+
+[![Build Status](https://scrutinizer-ci.com/g/irge24/MVC/badges/build.png?b=main)](https://scrutinizer-ci.com/g/irge24/MVC/build-status/main)
+
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/irge24/MVC/badges/code-intelligence.svg?b=main)](https://scrutinizer-ci.com/code-intelligence)
+
+
 ## Hur du klonar och kör projektet
 
 Innan du börjar behöver du ha följande installerat på din dator:
