@@ -56,7 +56,7 @@ final class LibraryController extends AbstractController
         $books = $bibliotekRepository
             ->findAll();
 
-        if (!$books) {
+        if (empty($books)) {
             throw $this->createNotFoundException('Boken hittades inte');
         }
 
@@ -107,7 +107,7 @@ final class LibraryController extends AbstractController
             ->findAll();
 
         
-        if (!$books) {
+        if (empty($books)) {
             throw $this->createNotFoundException('Hittades inte');
         }
 
@@ -150,7 +150,7 @@ final class LibraryController extends AbstractController
     ): Response {
         $books = $bibliotekRepository->findAll();
 
-        if (!$books) {
+        if (empty($books)) {
             throw $this->createNotFoundException('Boken hittades inte');
         }
 
