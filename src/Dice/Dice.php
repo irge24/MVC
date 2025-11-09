@@ -1,5 +1,5 @@
 <?php
-/*
+
 namespace App\Dice;
 
 class Dice
@@ -22,4 +22,3 @@ class Dice
         return "[{$this->value}]";
     }
 }
-*/

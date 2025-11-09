@@ -5,7 +5,7 @@
 {% block body %}
     <h1>Metrics analys</h1>
 
-    <h3>Introduktion - De 6 C:na</h3>
+    <h2>Introduktion - De 6 C:na</h2>
 
     <p>Codestyle: Codestyle handlar om kodens utseende och struktur, alltså
     själva koden man direkt ser när man går in i dess filer. Det handlar om att 
@@ -55,7 +55,7 @@
     och på så sätt både låg komplexitet och bra testtäckning i sina klasser och metoder, för
     att uppnå bra kvalité.</p>
 
-    <h3>Phpmetrics</h3>
+    <h2>Phpmetrics</h2>
 
     <a href="{{ asset('images/phpmetrics.png') }}">
         <img src="{{ asset('images/phpmetrics.png') }}" alt="">
@@ -83,11 +83,69 @@
     och bland de saker jag bör förbättra och fokusera mest på, för att öka tillförlitligheten av min kod. 
     Min täckning ligger just nu på cirka 28%, vilket är lågt och bör höjas.</p>
 
-    <h3>Scutinizer</h3>
+    <h2>Scutinizer</h2>
 
-    <h3>Förbättringar</h3>
+    <!-- Scrutinizer Badges för projektet MVC -->
+    <div style="text-align: center; margin-top: 10px;">
+    <a href="https://scrutinizer-ci.com/g/irge24/MVC/">
+        <img src="https://scrutinizer-ci.com/g/irge24/MVC/badges/quality-score.png?b=main" 
+             alt="Quality Score" style="height:20px; margin-right:5px;">
+    </a>
+    <a href="https://scrutinizer-ci.com/g/irge24/MVC/">
+        <img src="https://scrutinizer-ci.com/g/irge24/MVC/badges/coverage.png?b=main" 
+             alt="Coverage" style="height:20px; margin-right:5px;">
+    </a>
+    <a href="https://scrutinizer-ci.com/g/irge24/MVC/">
+        <img src="https://scrutinizer-ci.com/g/irge24/MVC/badges/build.png?b=main" 
+             alt="Build Status" style="height:20px; margin-right:5px;">
+    </a>
+    <a href="https://scrutinizer-ci.com/g/irge24/MVC/">
+        <img src="https://scrutinizer-ci.com/g/irge24/MVC/badges/code-intelligence.svg?b=main" 
+             alt="Code Intelligence" style="height:20px;">
+    </a>
+    </div>
 
-    <h3>Diskussion</h3>
+    <h2>Förbättringar</h2>
+
+    <p>De fyra saker jag har tänkt förbättra är följande - öka testtäckningen genom att skriva tester för de klasser
+    som inte har tester, förbättra cohension genom att försöka dela upp klasserna ännu mer, förbättra coupling genom att försöka
+    göra klasserna ännu mer oberoende av varandra, samt få bort de fel och varningar som dyker upp. Jag hoppas på att detta kommer 
+    ge er optimala värden för phpmetrics och att jag får bort alla fel i koden, samt att framför allt coverage på Scrutinizer
+    blir grönt och att jag eventuellt når 10 på Scrutinizer. På så sätt skulle jag uppnå optimal kod, speciellt om jag jobbar
+    på testerna, vilket var den svagaste punkten i min kod.</p>
+
+    <h3>Före förbättringar:</h3>
+    <div style="text-align: center; margin-top: 10px;">
+        <img src="https://scrutinizer-ci.com/g/irge24/MVC/badges/quality-score.png?b=main" 
+            alt="Quality Score" style="height:20px; margin-right:5px;">
+        <img src="https://scrutinizer-ci.com/g/irge24/MVC/badges/coverage.png?b=main" 
+            alt="Coverage" style="height:20px; margin-right:5px;">
+        <img src="https://scrutinizer-ci.com/g/irge24/MVC/badges/build.png?b=main" 
+            alt="Build Status" style="height:20px; margin-right:5px;">
+        <img src="https://scrutinizer-ci.com/g/irge24/MVC/badges/code-intelligence.svg?b=main" 
+            alt="Code Intelligence" style="height:20px;">
+    </div>
+
+    <p>Testning (Coverage / Unit testing):</p>
+    <p>Antal tester: 5</p>
+    <p>Klasser testade: 5 av 18 (≈ 27.78 %)</p>
+    <p>Scrutinizer coverage: 12 %</p>
+    
+    <p>Coupling:</p>
+    <p>Afferent coupling (Ca): 0.78</p>
+    <p>Efferent coupling (Ce): 2.39</p>
+    <p>Instability (I): 0.63</p>
+    <p>Depth of Inheritance Tree: 1.4</p>
+
+    <p>Cohesion:</p>
+    <p>Lack of Cohesion of Methods (LCOM): 1.5</p>
+
+    <h3>Efter förbättringar:</h3>
+
+    
+    
+
+    <h2>Diskussion</h2>
 
     <p>Jag tänker att man absolut kan jobba aktivt  med kodkvalitet och "clean code" 
     på detta sätt som vi gjorde i denna uppgift. Jag upplevde det väldigt strukturerat och effektivt,
