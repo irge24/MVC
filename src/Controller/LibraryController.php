@@ -56,6 +56,10 @@ final class LibraryController extends AbstractController
         $books = $bibliotekRepository
             ->findAll();
 
+        if (!$books) {
+            throw $this->createNotFoundException('Boken hittades inte');
+        }
+
         $allBooks = [];
 
         foreach ($books as $book) {
@@ -102,6 +106,11 @@ final class LibraryController extends AbstractController
         $books = $bibliotekRepository
             ->findAll();
 
+        
+        if (!$books) {
+            throw $this->createNotFoundException('Hittades inte');
+        }
+
         $allBooks = [];
         foreach ($books as $book) {
 
@@ -126,6 +135,9 @@ final class LibraryController extends AbstractController
 
         $id = $request->request->get('id');
         $book = $bibliotekRepository->find($id);
+        if (!$book) {
+            throw $this->createNotFoundException('Boken hittades inte');
+        }
         $entityManager->remove($book);
         $entityManager->flush();
 
@@ -137,6 +149,10 @@ final class LibraryController extends AbstractController
         BibliotekRepository $bibliotekRepository,
     ): Response {
         $books = $bibliotekRepository->findAll();
+
+        if (!$books) {
+            throw $this->createNotFoundException('Boken hittades inte');
+        }
 
         $allBooks = [];
         foreach ($books as $book) {
@@ -166,6 +182,10 @@ final class LibraryController extends AbstractController
     ): Response {
         $entityManager = $doctrine->getManager();
         $book = $entityManager->getRepository(Bibliotek::class)->find($id);
+
+        if (!$book) {
+            throw $this->createNotFoundException('Boken hittades inte');
+        }
 
         // visa formuläret med befintliga värden
         if ($request->isMethod('GET')) {
