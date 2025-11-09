@@ -36,10 +36,10 @@ final class LibraryController extends AbstractController
 
         // ta in data i databas
         $book = new Bibliotek();
-        $book->setTitel($request->request->get('titel'));
-        $book->setISBN($request->request->get('ISBN'));
-        $book->setFörfattare($request->request->get('författare'));
-        $book->setBild($request->request->get('bild'));
+        $book->setTitel((string) $request->request->get('titel', ''));
+        $book->setISBN((string) $request->request->get('ISBN', ''));
+        $book->setFörfattare((string) $request->request->get('författare', ''));
+        $book->setBild((string) $request->request->get('bild', ''));
 
         $entityManager->persist($book); // tell Doctrine you want to (eventually) save the Book
         $entityManager->flush();  // actually executes the queries (i.e. the INSERT query)
@@ -203,9 +203,10 @@ final class LibraryController extends AbstractController
     {
         return $this->render('metrics.html.twig');
     }
+}
 
     # FRÅN ÖVNINGEN
-
+/*
     #[Route('/product/view', name: 'product_view_all')]
     public function viewAllProduct(
         ProductRepository $productRepository
@@ -243,3 +244,4 @@ final class LibraryController extends AbstractController
         return $this->json($products);
     }
 }
+*/

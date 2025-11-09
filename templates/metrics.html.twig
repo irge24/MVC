@@ -105,6 +105,17 @@
     </a>
     </div>
 
+    <p>Det samlade betyget som koden fick på scrutinizer innan ändringar är 9,95/10, vilket är väldigt positivt. Det tyder på att koden
+    är tydlig, ren och bra strukturerad. Jag har 9 issues, men precis som nämnt under phpmetrics är detta småfel och 
+    ingenting kritiskt. Att det inte finns något kritiskt som behöver fixas visas också under alerts där det står “Good job, no alerts here.”.</p>
+
+    <p>Min badge "build" visar "passed" och "code intelligence" visar "available". Tillsammans med det samlade betyget som nämndes ovan
+    betyder dessa värden och mått att koden fungerar bra och att den har bra codestyle och låg complexity, alltså fin kod och struktur, samtidigt som koden 
+    är enkel och lätt att förstå, inte komplicerad och svårläst. Coverage är dock väldigt lågt, vilket också bidrar till dålig kodlukt (CRAP).
+    Coverage ligger på endast 12%, vilket innebär att endast en liten del av min kod är testad och att det är det största förbättringsområdet
+    och där koden generellt sett brister. Detta ses som det största förbättringsområdet, där koden behöver testas ännu mer för att få ett bra värde
+    i scrutinizer och för att få bra kodlukt och coverage, samt öka kodens tillförlitlighet.</p>
+
     <h2>Förbättringar</h2>
 
     <p>De fyra saker jag har tänkt förbättra är följande - öka testtäckningen genom att skriva tester för de klasser
@@ -113,37 +124,6 @@
     ge er optimala värden för phpmetrics och att jag får bort alla fel i koden, samt att framför allt coverage på Scrutinizer
     blir grönt och att jag eventuellt når 10 på Scrutinizer. På så sätt skulle jag uppnå optimal kod, speciellt om jag jobbar
     på testerna, vilket var den svagaste punkten i min kod.</p>
-
-    <h3>Före förbättringar:</h3>
-    <div style="text-align: center; margin-top: 10px;">
-        <img src="https://scrutinizer-ci.com/g/irge24/MVC/badges/quality-score.png?b=main" 
-            alt="Quality Score" style="height:20px; margin-right:5px;">
-        <img src="https://scrutinizer-ci.com/g/irge24/MVC/badges/coverage.png?b=main" 
-            alt="Coverage" style="height:20px; margin-right:5px;">
-        <img src="https://scrutinizer-ci.com/g/irge24/MVC/badges/build.png?b=main" 
-            alt="Build Status" style="height:20px; margin-right:5px;">
-        <img src="https://scrutinizer-ci.com/g/irge24/MVC/badges/code-intelligence.svg?b=main" 
-            alt="Code Intelligence" style="height:20px;">
-    </div>
-
-    <p>Testning (Coverage / Unit testing):</p>
-    <p>Antal tester: 5</p>
-    <p>Klasser testade: 5 av 18 (≈ 27.78 %)</p>
-    <p>Scrutinizer coverage: 12 %</p>
-    
-    <p>Coupling:</p>
-    <p>Afferent coupling (Ca): 0.78</p>
-    <p>Efferent coupling (Ce): 2.39</p>
-    <p>Instability (I): 0.63</p>
-    <p>Depth of Inheritance Tree: 1.4</p>
-
-    <p>Cohesion:</p>
-    <p>Lack of Cohesion of Methods (LCOM): 1.5</p>
-
-    <h3>Efter förbättringar:</h3>
-
-    
-    
 
     <h2>Diskussion</h2>
 

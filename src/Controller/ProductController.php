@@ -1,5 +1,5 @@
 <?php
-
+/*
 namespace App\Controller;
 
 use App\Entity\Product;
@@ -142,3 +142,4 @@ final class ProductController extends AbstractController
         return $this->json($products);
     }
 }
+*/
