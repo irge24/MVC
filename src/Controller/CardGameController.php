@@ -145,7 +145,6 @@ class CardGameController extends AbstractController
             $totalBank = $bankHand->getTotalValue();
         }
 
-        /*
         if ($totalPlayer > 21) {
             $message = "Banken vann!";
         } elseif ($totalBank > 21) {
@@ -153,23 +152,6 @@ class CardGameController extends AbstractController
         } elseif ($totalBank >= $totalPlayer) {
             $message = "Banken vann!";
         } else {
-            $message = "Spelaren vann!";
-        }
-        */
-
-        if ($totalPlayer > 21) {
-            $message = "Banken vann!";
-        }
-
-        if ($totalBank > 21) {
-            $message = "Spelaren vann!";
-        }
-
-        if ($totalBank >= $totalPlayer && $totalBank <= 21 && $totalPlayer <= 21) {
-            $message = "Banken vann!";
-        }
-
-        if ($totalBank < $totalPlayer && $totalBank <= 21 && $totalPlayer <= 21) {
             $message = "Spelaren vann!";
         }
 
