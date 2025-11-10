@@ -111,7 +111,6 @@ class CardGameController extends AbstractController
     #[Route("/game/stop", name: "stop")]
     public function stop(SessionInterface $session): Response
     {
-        $message = "";
 
         /** @var CardHand $playerHand */
         $playerHand = $session->get("player-hand");
@@ -145,15 +144,8 @@ class CardGameController extends AbstractController
             $totalBank = $bankHand->getTotalValue();
         }
 
-        if ($totalPlayer > 21) {
-            $message = "Banken vann!";
-        } elseif ($totalBank > 21) {
-            $message = "Spelaren vann!";
-        } elseif ($totalBank >= $totalPlayer) {
-            $message = "Banken vann!";
-        } else {
-            $message = "Spelaren vann!";
-        }
+        // Räkna ut vinnare
+        $message = $this->winner($playerHand, $bankHand);
 
         $data = [
             "turn" => $session->get("turn"),
@@ -165,6 +157,24 @@ class CardGameController extends AbstractController
         ];
 
         return $this->render('start.html.twig', $data);
+    }
+    
+    private function winner(CardHand $playerHand, CardHand $bankHand): string
+    {
+        $totalPlayer = $playerHand->getTotalValue();
+        $totalBank = $bankHand->getTotalValue();
+
+        $perfectScore = 21;
+
+        if ($totalPlayer > $perfectScore) {
+            return "Banken vann!";
+        } elseif ($totalBank > $perfectScore) {
+            return "Spelaren vann!";
+        } elseif ($totalBank >= $totalPlayer) {
+            return "Banken vann!";
+        } else {
+            return "Spelaren vann!";
+        }
     }
 
     // Kmom03
