@@ -120,7 +120,7 @@ class CardGameController extends AbstractController
         
         $turn = $session->get("turn");
         $totalBank = $bankHand->getTotalValue();
-        $totalPlayer = $playerHand->getTotalValue();
+        //$totalPlayer = $playerHand->getTotalValue();
 
         if ($turn == "player") {
             $session->set("turn", "bank");
