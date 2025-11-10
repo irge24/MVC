@@ -32,7 +32,7 @@ final class LibraryController extends AbstractController
             return $this->render('library/create.html.twig');
         }
 
-        $data = $request->request; // hämtar data från form-fälten
+        //$data = $request->request; // hämtar data från form-fälten
 
         // ta in data i databas
         $book = new Bibliotek();
