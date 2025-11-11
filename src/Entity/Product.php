@@ -1,5 +1,6 @@
 <?php
-/*
+
+
 namespace App\Entity;
 
 use App\Repository\ProductRepository;
@@ -48,4 +49,3 @@ class Product
         return $this;
     }
 }
-*/

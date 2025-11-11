@@ -106,7 +106,7 @@ final class LibraryController extends AbstractController
         $books = $bibliotekRepository
             ->findAll();
 
-        
+
         if (empty($books)) {
             throw $this->createNotFoundException('Hittades inte');
         }
@@ -223,10 +223,9 @@ final class LibraryController extends AbstractController
     {
         return $this->render('metrics.html.twig');
     }
-}
 
-    # FRÅN ÖVNINGEN
-/*
+# FRÅN ÖVNINGEN
+
     #[Route('/product/view', name: 'product_view_all')]
     public function viewAllProduct(
         ProductRepository $productRepository
@@ -264,4 +263,3 @@ final class LibraryController extends AbstractController
         return $this->json($products);
     }
 }
-*/

@@ -117,7 +117,7 @@ class CardGameController extends AbstractController
 
         /** @var CardHand $bankHand */
         $bankHand = $session->get("bank-hand") ?? new \App\Card\CardHand();
-        
+
         $turn = $session->get("turn");
         $totalBank = $bankHand->getTotalValue();
         //$totalPlayer = $playerHand->getTotalValue();
@@ -158,7 +158,7 @@ class CardGameController extends AbstractController
 
         return $this->render('start.html.twig', $data);
     }
-    
+
     private function winner(CardHand $playerHand, CardHand $bankHand): string
     {
         $totalPlayer = $playerHand->getTotalValue();
