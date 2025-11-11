@@ -130,8 +130,23 @@
     Jag har fortfarande några error och warnings kvar på phpmetrics, men det är minimalt antal och de har minskat sedan första gången.
     Även på scrutinizer hade jag några issues från början, 9 stycken, men nu har de försvunnit helt efter att 
     jag kollat igenom felen och fixat dem i koden. Därtill har mitt allmäna betyg på scrutinizer ökat från 9.95 till full pott, 10, vilket
-    är positivt och belyser de förbättringar som har gjorts.
+    är positivt och belyser de förbättringar som har gjorts. Fortsättningsvis, om jag kollar på cohension och coupling, så ser jag att
+    alla mina värden där har blivit lägre, vilket är vad vi strävar efter. Det är inte jättestor skillnad, men värdena har i alla fall
+    några decimaler jämfört med den första rapporten. Även scrutinizer belyste att det förbättrats, specifikt i en route som jag behövde dela upp
+    mer för att få bättre värden, då routen var för lång och innehåll en del kod som kunde delas upp och struktureras bättre. Cohension och coupling har 
+    somsagt minskats, vilket tyder på bättre självständighet mellan klasserna och att de är ännu mer oberoende av varandra 
+    jämfört med innan. Slutligen kollar jag på coverage. Phpmetrics visar en liten procentuell ökning, medan scrutinizer ligger på samma. Jag insåg i efterhand,
+    när jag skulle börja jobba och förbättra med koden, att jag inte kan göra så mycket åt coverage där jag är just nu, förutom att jag lade till något enstaka test
+    för en metod jag missat. Detta då vi har hållt oss till att endast testa våra klasser och metoder under kursens gång, vilket 
+    jag gjort för alla klasser och metoder nu, men när man kollar på hela koden tas även bl.a. controllers med i beaktning, vilket 
+    är överkurs för mig just nu och därmed har inga tester skrivits för dem. Coverage är alltså fortfarande ett stort förbättringsområde med
+    stor förbättringspotential, men inte i nuläget för mig personligen, utan isåfall i framtiden när jag lärt sig mer och 
+    har möjlighet att utöka testerna. Det är alltså någonting värt att notera i denna analys; att coverage inte går 
+    att förbättra så mycket med de verktyg jag har just nu, men att det är någonting som man kan tänka på och förbättra framöver.
+    Slutsatsen för analysen av förbättringarna är alltså att alla värden ser bättre ut och att scrutinizer ger fullt betyg.
     </p>
+
+    <p>(OBS! Sidopunkt: värdena kan komma att ändras under projektet, med tanke på att jag lämnar in mina inlämningar senare.)</p>
 
     <h2>Diskussion</h2>
 

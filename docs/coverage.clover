@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1762765242">
-  <project timestamp="1762765242">
+<coverage generated="1762856846">
+  <project timestamp="1762856846">
     <file name="/Users/irmagerguri/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="11" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="20" coveredstatements="20" elements="26" coveredelements="26"/>
@@ -315,7 +315,7 @@
     </file>
     <file name="/Users/irmagerguri/dbwebb-kurser/mvc/me/report/src/Controller/LibraryController.php">
       <class name="App\Controller\LibraryController" namespace="global">
-        <metrics complexity="19" methods="8" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="109" coveredstatements="0" elements="117" coveredelements="0"/>
+        <metrics complexity="22" methods="11" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="121" coveredstatements="0" elements="132" coveredelements="0"/>
       </class>
       <line num="15" type="method" name="index" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="18" type="stmt" count="0"/>
@@ -434,7 +434,22 @@
       <line num="216" type="stmt" count="0"/>
       <line num="221" type="method" name="metrics" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="224" type="stmt" count="0"/>
-      <metrics loc="268" ncloc="218" classes="1" methods="8" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="109" coveredstatements="0" elements="117" coveredelements="0"/>
+      <line num="229" type="method" name="viewAllProduct" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="233" type="stmt" count="0"/>
+      <line num="235" type="stmt" count="0"/>
+      <line num="236" type="stmt" count="0"/>
+      <line num="237" type="stmt" count="0"/>
+      <line num="239" type="stmt" count="0"/>
+      <line num="242" type="method" name="viewProductWithMinimumValue" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="247" type="stmt" count="0"/>
+      <line num="249" type="stmt" count="0"/>
+      <line num="250" type="stmt" count="0"/>
+      <line num="251" type="stmt" count="0"/>
+      <line num="253" type="stmt" count="0"/>
+      <line num="256" type="method" name="showProductByMinimumValue" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="261" type="stmt" count="0"/>
+      <line num="263" type="stmt" count="0"/>
+      <metrics loc="266" ncloc="255" classes="1" methods="11" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="121" coveredstatements="0" elements="132" coveredelements="0"/>
     </file>
     <file name="/Users/irmagerguri/dbwebb-kurser/mvc/me/report/src/Controller/LibraryJsonController.php">
       <class name="App\Controller\LibraryJsonController" namespace="global">
@@ -520,7 +535,69 @@
       <metrics loc="47" ncloc="47" classes="1" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="14" coveredelements="0"/>
     </file>
     <file name="/Users/irmagerguri/dbwebb-kurser/mvc/me/report/src/Controller/ProductController.php">
-      <metrics loc="147" ncloc="3" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      <class name="App\Controller\ProductController" namespace="global">
+        <metrics complexity="11" methods="9" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="50" coveredstatements="0" elements="59" coveredelements="0"/>
+      </class>
+      <line num="14" type="method" name="index" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="17" type="stmt" count="0"/>
+      <line num="18" type="stmt" count="0"/>
+      <line num="19" type="stmt" count="0"/>
+      <line num="22" type="method" name="createProduct" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="26" type="stmt" count="0"/>
+      <line num="28" type="stmt" count="0"/>
+      <line num="29" type="stmt" count="0"/>
+      <line num="30" type="stmt" count="0"/>
+      <line num="34" type="stmt" count="0"/>
+      <line num="37" type="stmt" count="0"/>
+      <line num="39" type="stmt" count="0"/>
+      <line num="42" type="method" name="showAllProduct" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="46" type="stmt" count="0"/>
+      <line num="47" type="stmt" count="0"/>
+      <line num="49" type="stmt" count="0"/>
+      <line num="50" type="stmt" count="0"/>
+      <line num="51" type="stmt" count="0"/>
+      <line num="52" type="stmt" count="0"/>
+      <line num="53" type="stmt" count="0"/>
+      <line num="56" type="method" name="showProductById" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="61" type="stmt" count="0"/>
+      <line num="62" type="stmt" count="0"/>
+      <line num="64" type="stmt" count="0"/>
+      <line num="67" type="method" name="deleteProductById" visibility="public" complexity="2" crap="6" count="0"/>
+      <line num="72" type="stmt" count="0"/>
+      <line num="73" type="stmt" count="0"/>
+      <line num="75" type="stmt" count="0"/>
+      <line num="76" type="stmt" count="0"/>
+      <line num="77" type="stmt" count="0"/>
+      <line num="78" type="stmt" count="0"/>
+      <line num="81" type="stmt" count="0"/>
+      <line num="82" type="stmt" count="0"/>
+      <line num="84" type="stmt" count="0"/>
+      <line num="87" type="method" name="updateProduct" visibility="public" complexity="2" crap="6" count="0"/>
+      <line num="93" type="stmt" count="0"/>
+      <line num="94" type="stmt" count="0"/>
+      <line num="96" type="stmt" count="0"/>
+      <line num="97" type="stmt" count="0"/>
+      <line num="98" type="stmt" count="0"/>
+      <line num="99" type="stmt" count="0"/>
+      <line num="102" type="stmt" count="0"/>
+      <line num="103" type="stmt" count="0"/>
+      <line num="105" type="stmt" count="0"/>
+      <line num="108" type="method" name="viewAllProduct" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="112" type="stmt" count="0"/>
+      <line num="114" type="stmt" count="0"/>
+      <line num="115" type="stmt" count="0"/>
+      <line num="116" type="stmt" count="0"/>
+      <line num="118" type="stmt" count="0"/>
+      <line num="121" type="method" name="viewProductWithMinimumValue" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="126" type="stmt" count="0"/>
+      <line num="128" type="stmt" count="0"/>
+      <line num="129" type="stmt" count="0"/>
+      <line num="130" type="stmt" count="0"/>
+      <line num="132" type="stmt" count="0"/>
+      <line num="135" type="method" name="showProductByMinimumValue" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="140" type="stmt" count="0"/>
+      <line num="142" type="stmt" count="0"/>
+      <metrics loc="145" ncloc="142" classes="1" methods="9" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="50" coveredstatements="0" elements="59" coveredelements="0"/>
     </file>
     <file name="/Users/irmagerguri/dbwebb-kurser/mvc/me/report/src/Dice/Dice.php">
       <class name="App\Dice\Dice" namespace="global">
@@ -564,7 +641,22 @@
       <metrics loc="81" ncloc="81" classes="1" methods="9" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="0" elements="22" coveredelements="0"/>
     </file>
     <file name="/Users/irmagerguri/dbwebb-kurser/mvc/me/report/src/Entity/Product.php">
-      <metrics loc="53" ncloc="3" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      <class name="App\Entity\Product" namespace="global">
+        <metrics complexity="5" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="12" coveredelements="0"/>
+      </class>
+      <line num="22" type="method" name="getId" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="24" type="stmt" count="0"/>
+      <line num="27" type="method" name="getName" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="29" type="stmt" count="0"/>
+      <line num="32" type="method" name="setName" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="34" type="stmt" count="0"/>
+      <line num="36" type="stmt" count="0"/>
+      <line num="39" type="method" name="getValue" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="41" type="stmt" count="0"/>
+      <line num="44" type="method" name="setValue" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="46" type="stmt" count="0"/>
+      <line num="48" type="stmt" count="0"/>
+      <metrics loc="51" ncloc="51" classes="1" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="12" coveredelements="0"/>
     </file>
     <file name="/Users/irmagerguri/dbwebb-kurser/mvc/me/report/src/Kernel.php">
       <class name="App\Kernel" namespace="global">
@@ -581,8 +673,27 @@
       <metrics loc="44" ncloc="18" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
     </file>
     <file name="/Users/irmagerguri/dbwebb-kurser/mvc/me/report/src/Repository/ProductRepository.php">
-      <metrics loc="81" ncloc="4" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      <class name="App\Repository\ProductRepository" namespace="global">
+        <metrics complexity="3" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="0" elements="16" coveredelements="0"/>
+      </class>
+      <line num="19" type="method" name="findByMinimumValue" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="21" type="stmt" count="0"/>
+      <line num="22" type="stmt" count="0"/>
+      <line num="23" type="stmt" count="0"/>
+      <line num="24" type="stmt" count="0"/>
+      <line num="25" type="stmt" count="0"/>
+      <line num="26" type="stmt" count="0"/>
+      <line num="27" type="stmt" count="0"/>
+      <line num="35" type="method" name="findByMinimumValue2" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="37" type="stmt" count="0"/>
+      <line num="39" type="stmt" count="0"/>
+      <line num="43" type="stmt" count="0"/>
+      <line num="45" type="stmt" count="0"/>
+      <line num="47" type="stmt" count="0"/>
+      <line num="50" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="52" type="stmt" count="0"/>
+      <metrics loc="80" ncloc="44" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="0" elements="16" coveredelements="0"/>
     </file>
-    <metrics files="18" loc="1543" ncloc="1117" classes="14" methods="68" coveredmethods="18" conditionals="0" coveredconditionals="0" statements="415" coveredstatements="53" elements="483" coveredelements="71"/>
+    <metrics files="18" loc="1536" ncloc="1381" classes="17" methods="88" coveredmethods="18" conditionals="0" coveredconditionals="0" statements="497" coveredstatements="53" elements="585" coveredelements="71"/>
   </project>
 </coverage>
