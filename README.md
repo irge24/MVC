@@ -61,11 +61,21 @@ http://127.0.0.1:8000
 
 ---
 
-## 📄 Innehåll på min symfony-sida
+## 📄 Innehåll i repot och på min symfony-sida
 
 Webbplatsen innehåller följande sidor:
 
-1. **Startsida** (`/`) – Förstasidan med min introduktion
+1. **Startsida - Home** (`/`) – Förstasidan med min introduktion
 2. **About** (`/about`) – Om kursen MVC
-3. **Report** (`/report`) – Redovisningstexter under kursens gång
-4. **Random number** (`/random`) – Visar ett slumpmässigt tal
+3. **Random number** (`/random`) – Visar ett slumpmässigt tal
+4. **Report** (`/report`) – Redovisningstexter för alla kmom
+5. **Card** (`/card`) – Kortlek
+6. **Session** (`/session`) – Sessionen
+7. **Game** (`/game`) – Spel med kort
+8. **Library** (`/library`) – Databas bibliotek
+9. **Metrics** (`/metrics`) – Metrics analys
+10. **Project** (`/proj`) – Projekt Kmom10
+
+Repot innehåller all kod för ovanstående sidor på Symfony, därtill kod
+för JSON api-sidorna, klasser, metoder, controllers m.m. Alltså all kod för både frontend och backend. Repot innehåller också information och analyser av min kod och man kan exempelvis ta sig vidare till Scrutinizer via ovanstående badges, för att se mer av kodanalysen.
+Repot finns för att representera och samla mitt arbete under kursen MVC - Objektorienterade webbteknologier på Blekinge Tekniska Högskola, under programmet Webbprogrammering distans 120 hp. Koden är från första kursmomentet, kmom01, till det sista kmom07/10, vilket är projektet.
