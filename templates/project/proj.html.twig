@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
-    <head>
+    <head class="head-proj">
         <meta charset="UTF-8">
         <title>{% block title %}Project{% endblock %}</title>
-        
+
         <link rel="icon" href="{{ asset('img/glider.svg') }}">
-        
+
         {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
+            {{ encore_entry_link_tags('proj') }}
         {% endblock %}
 
         {% block javascripts %}
@@ -15,10 +15,10 @@
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
-    <body>
+    <body class="body-proj">
 
-        <header class="site-header">
-            <span class="site-title">My project</span>
+        <header class="site-header-proj">
+            <span class="site-title-proj">My project - Sustainibility</span>
         </header>
 
         <nav>
@@ -29,9 +29,9 @@
         </nav>        
         {% block body %}{% endblock %}
 
-        <footer class="site-footer">
-        Sustainibility
+        <footer class="site-footer-proj">
 
+        <p>@COPYRIGHT - IRMA'S MVC SUSTAINIBILITY PROJECT</p>
 
         </footer>
     </body>

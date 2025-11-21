@@ -1,0 +1,85 @@
+body-proj {
+    margin: 0 auto;
+    max-width: 400px;
+    background-size: cover;
+    background-color: linear-gradient(rgba(255, 0, 0, 0.597), rgba(255, 255, 0, 0.415));
+}
+
+header {
+    height: 150px;
+}
+h1 {
+    font-family: 'Copperplate', 'Copperplate Gothic Light', fantasy; /* Copperplate med fallback */
+}
+
+img {
+    width: 557px;
+    height: 371px;
+}
+
+.row {
+    display: flex;
+}
+  
+.column {
+    float: left;
+    width: 50%; 
+    padding: 20px; 
+    border: 1px solid black;
+}
+
+.site-header-proj {
+    border: 3px solid black;
+    background: linear-gradient(to right, #4caf50, white);
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    height: 100px;
+    width: 100%;
+}
+
+.site-title-proj {
+    font-size: 30px;
+    font-family: 'Copperplate', 'Copperplate Gothic Light', fantasy;
+    font-weight: bold;
+    text-align: center;
+}
+
+.site-footer-proj {
+    border: 3px solid black;
+    font-size: 15px;
+    font-family: 'Copperplate', 'Copperplate Gothic Light', fantasy;
+    font-weight: bold;
+    background: linear-gradient(to right, #4caf50, white);
+    width: 100%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    text-align: center;
+}
+
+p {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.flash-notice {
+    padding: 0.5em;
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+}
+.flash-notice:before {
+    content: "ⓘ";
+}
+
+.flash-warning {
+    padding: 0.5em;
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+.flash-warning:before {
+    content: "⚠";
+}
