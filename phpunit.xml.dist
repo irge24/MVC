@@ -29,6 +29,8 @@
         </include>
         <exclude>
             <directory>src/Controller</directory>
+            <directory>src/Kernel.php</directory>
+            <directory>src/Entity</directory>
         </exclude>
         <report>
           <clover outputFile="docs/coverage.clover"/>
