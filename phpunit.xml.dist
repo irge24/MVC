@@ -30,7 +30,8 @@
         <exclude>
             <directory>src/Controller</directory>
             <directory>src/Kernel.php</directory>
-            <directory>src/Entity</directory>
+            <directory>src/Repository</directory>
+            <file>src/Entity/Product.php</file>
         </exclude>
         <report>
           <clover outputFile="docs/coverage.clover"/>
