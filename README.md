@@ -7,7 +7,7 @@ SIdan är byggd med Symfony-ramverket och innehåller en enkel struktur med rout
 
 ---
 
-## Scrutinizer - KMOM06
+## Scrutinizer badges
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/irge24/MVC/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/irge24/MVC/?branch=main)
 
