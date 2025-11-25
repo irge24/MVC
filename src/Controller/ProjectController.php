@@ -198,7 +198,7 @@ final class ProjectController extends AbstractController
         return $response;
     }
 
-    #[Route('proj/api/indikator1/{year}', name: 'indikator1_year', methods: ['POST'])]
+    #[Route('/proj/api/indikator1/{year}', name: 'indikator1_year', methods: ['GET', 'POST'])]
     public function indikator1_year(
         Indikator1Repository $indikator1Repository,
         int $year

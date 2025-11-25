@@ -26,7 +26,8 @@ function showOutput(data) {
 
 document.getElementById("showYear").addEventListener("click", async () => {
     let year = document.getElementById("year").value;
-    let response = await fetch("/proj/api/indikator1/" + year, { method: "POST" });
+    let url = "{{ path('indikator1_year', {'year': 'YEAR'}) }}".replace('YEAR', year);
+    let response = await fetch(url, { method: "POST" });
     let data = await response.json();
     showOutput(data);
 });
