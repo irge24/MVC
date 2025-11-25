@@ -25,9 +25,184 @@
             <ul>
                 <li><a href="{{ path('proj') }}">Project</a></li>
                 <li><a href="{{ path('proj_about') }}">About</a></li>
+                <li><a href="{{ path('proj_api') }}">JSON API</a></li>
             </ul>
         </nav>        
-        {% block body %}{% endblock %}
+        {% block body %}
+
+        <h1>Mål 3 - God hälsa och välbefinnande</h1>
+
+        <a href="{{ asset('images/projekt3.png') }}">
+            <img src="{{ asset('images/projekt3.png') }}" class="img-proj1" alt="">
+        </a>
+
+        <h3><strong> Inom hållbar utveckling finns det 17 globala mål som 
+        man vill uppnå, i syfte att förbättra olika aspekter världen över. Målen är följande:</strong></h3>
+
+        <ul>
+            {% for nummer, text in globala %}
+                <p>{{ nummer }}: {{ text }}</p>
+            {% endfor %}
+        </ul>
+
+        <h3><strong> Jag har valt att fokusera på mål nummer 3; God hälsa och välbefinnande, där jag kommer rikta in mig på två indikatorer inom delmålen för mål 3.
+        Mer specifikt kommer jag kolla på Sveriges statistik för dessa indikatorer, men fakta och uttalanden om ämnena som tas upp 
+        gäller hela världen.
+        Nedan följer fakta, statistik, uttalanden och personliga reflektioner gällande mitt valda ämne.</strong></h3>
+
+        <a href="{{ asset('images/projekt.png') }}">
+            <img src="{{ asset('images/projekt.png') }}" class="img-proj" alt="">
+        </a>
+
+        <br><br>
+
+        <a href="https://globalamalen.se/om-globala-malen/mal-3-halsa-och-valbefinnande/">Mål 3 – God hälsa och välbefinnande</a>
+
+        <h3>Delmål för Mål 3</h3>
+
+        <ul>
+            {% for nummer, text in delmål %}
+                <p>{{ nummer }}: {{ text }}</p>
+            {% endfor %}
+        </ul>
+
+        <h3>Indikator - "Maternal mortality ratio" (Mödradödlighet)</h3>
+
+        <a href="{{ asset('images/projekt1.png') }}">
+            <img src="{{ asset('images/projekt1.png') }}" class="img-proj1" alt="">
+        </a>
+
+    <div class="example-wrapper">
+        <table border="1">
+        <thead>
+            <tr>
+                <th>År</th>
+                <th>Antal dödsfall per 100 000 levande födda</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for indikator in indikator1 %}
+            <tr>
+                <td>{{ indikator.year }}</td>
+                <td>{{ indikator.deaths }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+    <pre id="output"></pre>
+    </div>
+
+    <p>Följande indikator, som faller in under delmål 3.1 Minska Mödradödligheten, presenterar antal dödsfall per 100 000 levande födda; det som 
+    inkluderats i statistiken är dödsfall med graviditet, förlossning, barnsängstid, 
+    eller obstetrisk stelkramp som underliggande dödsorsak. Tabellen visa inte på någon större förändring,
+    då värdena varierar år från år, utan något specifikt mönster, medan bilden, som visar 
+    mätvärden för en längre period, visar att mödradödligheten i Sverige minskat. På hemsidan för de globala målen sägs följande om delmål 3.1:</p> 
+
+    <p><i>Till 2030 minska mödradödligheten i världen till mindre än 70 dödsfall per 100 000 förlossningar med levande barn.</i></p>
+
+    <p>Därtill sägs följande, i en PDF från FN om Mål 3:</p>
+
+    <p><i>...färre mödrar och barn dör i samband med graviditet och förlossning. 
+    Samtidigt kvarstår stora utmaningar. 
+    Fler flickor och kvinnor behöver få tillgång till sjukvård i samband med graviditet 
+    för att deras chanser att överleva förlossningen ska öka.</i></p>
+
+    <p>I PDF:en nämns också tips för att främja sin hälsa. Bland annat nämns följande två tips:</p>
+
+    <p><i>Rör på dig! Hitta en idrott eller annan rörelseform som du tycker är rolig. 
+    Regelbunden motion bidrar till bättre hälsa.</i></p>
+
+    <p>Jag anser det självklart vara positivt att mödradödligheten minskat världen över och ser 
+    det som positivt att det är någonting som inkluderas i det globala målet för hälsa och välbefinnande.
+    I Sverige ser vi att mödradödligheten är låg, men i flera andra länder visas högre mätvärden, då 
+    tillgängligheten till vård och dess kvalité skiljer sig från andra länder där vården är bättre. I samband med att
+    det strävas efter att kvinnor ska få tillgång till vård i samband med graviditet och att det tipsas om motion för bättre hälsa,
+    vill jag belysa andra faktorer jag tror också spelar stor roll. Det gäller såväl Sverige som andra länder. 
+    Jag skulle vilja rikta fokus mot förlossningsvården när kvinnan väl har den tillgänglig; dess kvalité och den utbildning
+    som exempelvis barnmorskor får innan de möter patienter. Det riktas mycket kritik mot förlossningsvården, även i Sverige,
+    vilket har upplysts flera gånger på nyheterna och i olika artiklar. Det handlar om förlossningsskador, men även dödsfall. Kritiken 
+    handlar de flesta gånger om att gravida kvinnor inte blivit lyssnade på eller att hennes talan inte blivit respekterad, vilket 
+    är fel enligt patientlagen, där patientens samtycke sätts först. Det handlar om interventioner som gjorts utan kvinnans samtycke och till 
+    följd av det psykiska och fysiska skador under förlossningen, för både barn och mamma. Min slutsats är därför att 
+    fokuset också bör rikta sig på att utveckla förlossningsvården och dess rutiner, som ibland innehåller saker 
+    som inte är evidensbaserade. Därtill vara mer lyhörd till kvinnans önskemål och det hon anser vara bäst för sig 
+    själv och barnet. Huruvida mödradödligheten kan påverkas av det går inte att veta säkert, men jag tror 
+    att det handlar mer om bara tillgång till vård; det handlar också om vad för vård man får och vilket resultat den vården ger.</p>
+
+        <h3>Indikator - COVID-19 mortality (Dödsfall i corona)</h3>
+
+        <div class="example-wrapper">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Ålder</th>
+                    <th>Totalt antal dödsfall</th>
+                    <th>Total %</th>
+                    <th>Män</th>
+                    <th>Män %</th>
+                    <th>Kvinnor</th>
+                    <th>Kvinnor %</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in covid %}
+                <tr>
+                    <td>{{ row.age }}</td>
+                    <td>{{ row.deaths }}</td>
+                    <td>{{ row.totalPercentage }}</td>
+                    <td>{{ row.men }}</td>
+                    <td>{{ row.menPercentage }}</td>
+                    <td>{{ row.women }}</td>
+                    <td>{{ row.womenPercentage }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+
+        <p>Tabellen visar indikatorn för avlidna i covid-19, enligt dödsorsaksintyg inkomna fram till den 14 september 2020. Tabellen presenterar 
+        mätvärden baserat på kön och ålder, där vi kan se värden för de totala dödsfallen, samt för män respektive kvinnor, både i antal och procent.
+        Covid-19 var en pandemi som drabbade hela världen och en sjukdom som människor fortfarande drabbas av idag.</p>
+
+        <p>FN:s generalsekreterare António Guterres uttalade sig på följande vis:</p>
+
+        <p><i>Everything we do during and after this crisis [COVID-19] must be with a strong focus on building more equal, 
+        inclusive and sustainable economies and societies that are more resilient
+        in the face of pandemics, climate change, and the many other global challenges
+        we face.</i></p>
+
+        <p>På hemsidan tipsar de om följande, utöver de tips som nämndes för första indikatorn:</p>
+
+        <p><i>Ta hand om dig! God hälsa är viktigt för din möjlighet att klara
+        skolan, arbeta, försörja dig och leva ett självständigt liv, något som 
+        bidrar till samhällets tillväxt och hållbara utveckling. Så gör dig själv 
+        och samhället en tjänst – ta hand om dig!</i></p>
+
+        <p><i>Vaccinera dig. Se till att du är vaccinerad. Det är en enkel sak du 
+        kan göra för att se till att du håller dig friskare. Att du är vaccinerad 
+        är också bra för samhället i stort.</i></p>
+
+        <p>Personligen reflekterar jag på liknande sätt som för den första indikatorn jag nämnde; 
+        jag håller med till viss del om dessa uttalanden och det arbete som görs för en utveckling mot det bättre, 
+        men samtidigt tycker jag även här att fokus även bör ges till andra saker. Bland tipsen som har nämnts på hemsidan 
+        för de globala målen, mer specifikt under detta mål om god hälsa och välbefinnande, handlar om att varje individ
+        ska ta hand om sin hälsa, vilket kommer visa positiva resultat på både individnivå och samhällsnivå. Dock 
+        hade jag önskat att ännu mer energi lades på denna aspekt; att främja vikten av motion ännu mer och parallellt med detta 
+        främja god hälsa, och förebygga dålig hälsa, ännu mer just på samhällsnivå. Jag tänker att mer fokus skulle behövas
+        på att exempelvis erbjuda bättre matvaror i affärer; ekologiskt, närodlat, icke-processat osv. I samband med detta också 
+        minska på gifter som finns runtom oss i exempelvis hudvård, städprodukter, kläder m.m. Jag anser det vara 
+        bland de bästa sätten att främja god hälsa på; att man börjar från start i hemmet, för att inte behöva åka till sjukhuset. 
+        Idag är det snarare tvärtom; det börjar på sjukhuset och man försöker ta sig tillbaka till hemmet.</p>
+
+        <p>Utöver vikten av att ta hand om sin hälsa skulle jag även vilja belysa vikten av noggrann forskning
+        av vaccin, i synnerhet covid-vaccinet, med tanke på att de globala målens hemsida har statistik för covid-dödsfall,
+        samtidigt som de rekommenderar att vaccinera sig. Precis som för förlossningsvården har det uppkommit forskning som visat 
+        att covid-vaccinet har negativa effekter, vilket belysts på nyheterna och i olika artiklar. Många kritiserade också
+        vaccinet från början, då det framställdes väldigt snabbt, vilket är ovanligt för vaccin. Min slutsats är alltså att 
+        man bör fokusera på hälsa inifrån och ut ännu mer på samhällsnivå, parallellt med att utveckla den sjukvård och de vaccin/mediciner
+        som redan finns och erbjuds, för att de ska bli mindre skadliga och fungera ännu bättre.</p>
+
+        {% endblock %}
 
         <footer class="site-footer-proj">
 

@@ -1,0 +1,35 @@
+{% extends "project/proj.html.twig" %}
+
+{% block title %}JSON API{% endblock %}
+
+{% block body %}
+    <h1>JSON API</h1>
+
+    <ul>
+        <li><a href="{{ path('api_globala') }}">De 17 globala målen för hållbar utveckling</a></li>
+        <li><a href="{{ path('api_delmal') }}">Lista på delmål för mål 3</a></li>
+        <li><a href="{{ path('api_indikator1') }}">Statistik mödradödlighet</a></li>
+        <li><a href="{{ path('api_covid') }}">Statistik covid</a></li>
+    </ul>
+
+<p>POST route:</p>
+<button id="showYear">Visa statistik mödradödlighet baserat på år. Välj ett år från 2000-2017.</button>
+<input type="number" id="year" min="2000">
+
+<pre id="output"></pre>
+
+
+<script>
+function showOutput(data) {
+    document.getElementById("output").innerText = JSON.stringify(data, null, 2);
+}
+
+document.getElementById("showYear").addEventListener("click", async () => {
+    let year = document.getElementById("year").value;
+    let response = await fetch("/proj/api/indikator1/" + year, { method: "POST" });
+    let data = await response.json();
+    showOutput(data);
+});
+</script>
+
+{% endblock %}
