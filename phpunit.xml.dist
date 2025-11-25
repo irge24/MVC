@@ -26,6 +26,9 @@
     <coverage processUncoveredFiles="true">
         <include>
             <directory suffix=".php">src</directory>
+            <exclude>
+                <directory>src/Controller</directory>
+            </exclude>
         </include>
         <report>
           <clover outputFile="docs/coverage.clover"/>
